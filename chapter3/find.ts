@@ -1,9 +1,11 @@
-const items = [
-    { name: 'John', age: 20 },
-    { name: 'Linda', age: 22 },
-    { name: 'Jonh', age: 40 },
-]
+namespace Find {
+    const items = [
+        { name: 'John', age: 20 },
+        { name: 'Linda', age: 22 },
+        { name: 'John', age: 40 },
+    ]
 
-const john = items.find((item) => item.name === 'John')
+    const john = items.find((item) => item.name === 'John')
 
-console.log(john)
+    console.log(john)
+}
