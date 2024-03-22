@@ -9,6 +9,8 @@
   "author": "ekuzmichev",
   "license": "ISC",
   "dependencies": {
+    "node-fetch": "^3.3.2",
     "typescript": "^5.4.3"
-  }
+  },
+  "type": "module"
 }
