@@ -8,17 +8,20 @@ class App extends React.Component {
     super(props)
 
     this.state = {
-      enteredName: ""
+      enteredName: "",
+      message: ""
     }
 
-    this.onNameChange = this.onNameChange.bind(this)
+    this.onNameInputChange = this.onNameInputChange.bind(this)
   }
 
-  state: { enteredName: string }
+  state: { enteredName: string, message: string }
 
-  onNameChange(e: React.ChangeEvent<HTMLInputElement>) {
+  onNameInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const value: string = e.target.value;
     this.setState({
-      enteredName: e.target.value
+      enteredName: value,
+      message: value === "" ? "" : `Hello from ${value}`
     })
   }
 
@@ -28,8 +31,8 @@ class App extends React.Component {
       <div className="App" >
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <input value={this.state.enteredName} onChange={this.onNameChange} />
-          <Greeting name={this.state.enteredName} />
+          <input value={this.state.enteredName} onChange={this.onNameInputChange} />
+          <Greeting message={this.state.message} />
         </header>
       </div>
     );
