@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import React, { useCallback, useReducer, useState } from 'react';
 import './App.css';
 import Greeting from './GreetingFunctional';
 import logo from './logo.svg';
@@ -25,14 +25,40 @@ const initialState = {
 }
 
 function App() {
-  const [{ message, enteredName }, dispatch] =
-    useReducer(reducer, initialState)
+  const [{ message, enteredName }, dispatch] = useReducer(reducer, initialState)
+
+  const [startCount, setStartCount] = useState(0)
+  const [count, setCount] = useState(0)
+
+  const setCountCallback = useCallback(() => {
+    const inc = count + 1 > startCount ? count + 1 : Number(count + 1) + startCount;
+    setCount(inc)
+  }, [startCount])
+
+  const onIncremrntBtnClick = () => {
+    setCountCallback()
+  }
+
+  const onStartCountInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setStartCount(Number(e.target.value))
+  }
+
+  console.log("Render App.tsx")
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Greeting message={message} enteredName={enteredName} greetingDispatcher={dispatch} />
+        <div style={{ marginTop: '10px' }}>
+          <label>Enter a number and we will increment it</label>
+          <br />
+          <input value={startCount} onChange={onStartCountInputChange} style={{ width: '.75rem' }} />
+          <br />
+          <label>{count}</label>
+          <br />
+          <button onClick={onIncremrntBtnClick}>Increment count</button>
+        </div>
       </header>
     </div>
   );
