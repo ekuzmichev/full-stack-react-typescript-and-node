@@ -16,7 +16,7 @@ const DisplayText = () => {
     return (
         <form>
             <div>
-                <label>Enter your name</label>
+                <label>Please, enter your name</label>
             </div>
             <div>
                 <input data-testid="user-input" value={txt} onChange={onTextInputChange} />

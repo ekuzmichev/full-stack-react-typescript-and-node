@@ -7,6 +7,10 @@ describe("Test DisplayText", () => {
         console.log(baseElement.innerHTML)
         expect(baseElement).toBeInTheDocument()
     })
+    it("matches snapshot", () => {
+        const { baseElement } = render(<DisplayText />)
+        expect(baseElement).toMatchSnapshot()
+    })
     it("receives input text", () => {
         const testuser = "testuser"
         const { getByTestId } = render(<DisplayText />)
