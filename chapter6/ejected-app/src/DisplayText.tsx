@@ -1,6 +1,10 @@
-import React, { useState } from "react"
+import React, { FC, useState } from "react"
 
-const DisplayText = () => {
+interface DisplayTextProps {
+    getUserFullName: (username: string) => Promise<string>
+}
+
+const DisplayText: FC<DisplayTextProps> = ({ getUserFullName }) => {
     const [txt, setTxt] = useState("")
     const [msg, setMsg] = useState("")
 
@@ -8,9 +12,9 @@ const DisplayText = () => {
         setTxt(e.target.value)
     }
 
-    const onShowMsgBtnClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const onShowMsgBtnClick = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
-        setMsg(`Welcome to React testing, ${txt}`)
+        setMsg(`Welcome to React testing, ${await getUserFullName(txt)}`)
     }
 
     return (
