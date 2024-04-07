@@ -1,5 +1,9 @@
-import { fireEvent, render, waitFor } from "@testing-library/react"
+import { cleanup, fireEvent, render, waitFor } from "@testing-library/react"
 import DisplayText from "./DisplayText"
+
+jest.mock("./UserTodos")
+
+afterEach(cleanup)
 
 describe("Test DisplayText", () => {
     const userFullName = 'John Tester'
