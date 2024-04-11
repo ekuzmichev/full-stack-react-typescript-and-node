@@ -7,7 +7,8 @@ interface ScreenCProps {
 
 const ScreenC = (props: ScreenCProps) => {
   const { message } = props;
-  let { userId } = useParams();
+  
+  const { userId } = useParams();
 
   const navigate = useNavigate();
 
