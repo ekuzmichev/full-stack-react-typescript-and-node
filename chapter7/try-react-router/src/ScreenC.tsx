@@ -8,18 +8,25 @@ interface ScreenCProps {
 const ScreenC = (props: ScreenCProps) => {
   const { message } = props;
   let { userId } = useParams();
-  
+
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     setTimeout(() => {
       navigate("/");
     }, 3000);
   });
 
+  const onGoBackBtnClick = () => {
+    navigate(-1);
+  };
+
   return (
     <div>
       {message}; Got user: {userId}
+      <div>
+        <button onClick={onGoBackBtnClick}>Go back</button>
+      </div>
     </div>
   );
 };
