@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface ScreenCProps {
   message: string;
@@ -7,7 +8,20 @@ interface ScreenCProps {
 const ScreenC = (props: ScreenCProps) => {
   const { message } = props;
   let { userId } = useParams();
-  return <div>{message}; Got user: {userId}</div>;
+  
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
+  });
+
+  return (
+    <div>
+      {message}; Got user: {userId}
+    </div>
+  );
 };
 
 export default ScreenC;
