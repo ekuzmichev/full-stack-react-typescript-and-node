@@ -1,18 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import ScreenA from "./ScreenA";
+import ScreenB from "./ScreenB";
+import ScreenC from "./ScreenC";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <ScreenA />,
+  },
+  {
+    path: "/b",
+    element: <ScreenB />,
+  },
+  {
+    path: "/c/:userId",
+    element: <ScreenC message="Hello! I'm on ScreenC" />,
+  },
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
