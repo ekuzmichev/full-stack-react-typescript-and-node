@@ -1,8 +1,15 @@
 import http from "http";
 
 const server = http.createServer((req, res) /*Request, Response*/ => {
-  console.log(req);
-  res.end("hello world");
+  if (req.url === "/") {
+    res.end("hello world");
+  } else if (req.url === "/a") {
+    res.end("welcome to route a");
+  } else if (req.url === "/b") {
+    res.end("welcome to route b");
+  } else {
+    res.end("good bye");
+  }
 });
 
 const port = 8000;
