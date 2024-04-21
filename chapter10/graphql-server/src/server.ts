@@ -7,14 +7,18 @@ import express from "express";
 import { createServer } from "http";
 import resolvers from "./resolvers";
 import typeDefs from "./typeDefs";
+import { applyMiddleware } from "graphql-middleware";
+import { log } from "./Logger";
 
 const app = express();
 const pubsub = new PubSub();
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
+const schemaWithMiddleware = applyMiddleware(schema, log);
+
 const apolloServer = new ApolloServer({
-  schema,
+  schema: schemaWithMiddleware,
   context: ({ req, res }: any) => ({ req, res, pubsub }),
 });
 

@@ -38,6 +38,7 @@ const resolvers: IResolvers = {
       ctx: GqlContext,
       info: any
     ): Promise<Todo[]> => {
+      console.log("Running getTodos");
       return todos;
     },
   },
