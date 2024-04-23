@@ -1,13 +1,18 @@
 import "./App.css";
+import LeftMenu from "./components/LeftMenu";
+import Main from "./components/Main";
+import Nav from "./components/Nav";
+import RightMenu from "./components/RightMenu";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
     <div className="App">
-      <div className="navigation">Nav</div>
-      <div className="sidebar">Sidebar</div>
-      <div className="left-menu">Left Menu</div>
-      <div className="content">Main</div>
-      <div className="right-menu">Right Menu</div>
+      <Nav />
+      <Sidebar />
+      <LeftMenu />
+      <Main />
+      <RightMenu />
     </div>
   );
 }
