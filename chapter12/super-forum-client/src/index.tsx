@@ -6,11 +6,16 @@ import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import configureStore from "./store/configureStore";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    ),
   },
 ]);
 
