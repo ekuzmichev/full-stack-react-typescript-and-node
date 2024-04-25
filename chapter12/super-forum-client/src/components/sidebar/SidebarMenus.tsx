@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { UserProfile, setUserProfile } from "../../reducers/user-reducer";
 import { AppState, useAppSelector } from "../../store";
+import "./SidebarMenus.css"
 
 export const SidebarMenus = () => {
   const user: UserProfile | null = useAppSelector(
