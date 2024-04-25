@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import ErrorBoundary from "./components/ErrorBoundary";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import configureStore from "./store/configureStore";
-import ErrorBoundary from "./components/ErrorBoundary";
+import { store } from "./store";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +25,7 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <Provider store={configureStore()}>
+    <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
