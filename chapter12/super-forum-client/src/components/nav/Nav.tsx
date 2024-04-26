@@ -43,7 +43,6 @@ const Nav = () => {
         isOpen={menuVisible}
         onRequestClose={onMenuModalRequestClose}
         shouldCloseOnOverlayClick={true}
-        shouldCloseOnEsc={true}
         ariaHideApp={false}
       >
         <SidebarMenus />
