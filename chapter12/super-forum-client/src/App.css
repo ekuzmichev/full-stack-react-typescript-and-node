@@ -56,6 +56,59 @@
   z-index: 1000;
 }
 
+input[type="text"],
+input[type="password"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.action-btn {
+  background-color: skyblue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: white;
+  color: gray;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: solid 1px gray;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-buttons {
+  margin-top: 0.25em;
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  grid-auto-flow: column;
+}
+
+.form-buttons-sm {
+  grid-template-columns: 1fr;
+}
+
+.form-btn-left {
+  grid-column: 1;
+}
+
+.form-btn-right {
+  grid-column: 2;
+  margin-left: 2em;
+  padding-top: 0.8em;
+}
+
 @media screen and (orientation: portrait) and (max-width: 768px) {
   .App {
     grid-template-columns: 1fr;
@@ -70,5 +123,18 @@
     right: 0.5em;
     top: 3.5em;
     transform: translate(0%);
+  }
+  .form-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .form-btn-left {
+    grid-column: 1;
+  }
+
+  .form-btn-right {
+    grid-column: 1;
+    margin-left: 0.5em;
+    padding-top: 0.5em;
   }
 }

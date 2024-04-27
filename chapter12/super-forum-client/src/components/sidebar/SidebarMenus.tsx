@@ -1,12 +1,15 @@
 import { faRegistered, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { UserProfile, setUserProfile } from "../../reducers/user-reducer";
 import { AppState, useAppSelector } from "../../store";
 import "./SidebarMenus.css";
+import { Registration } from "../auth/Registration";
 
 export const SidebarMenus = () => {
+  const [registrationFormOpen, setRegistrationFormOpen] = useState(false);
+
   const user: UserProfile | null = useAppSelector(
     (state: AppState) => state.user.userProfile
   );
@@ -22,6 +25,10 @@ export const SidebarMenus = () => {
     dispatch(setUserProfile(userProfile));
   }, [dispatch]);
 
+  const onRegistrationFormToggle = () => {
+    setRegistrationFormOpen(!registrationFormOpen);
+  };
+
   return (
     <>
       <ul>
@@ -30,8 +37,12 @@ export const SidebarMenus = () => {
           <span className="menu-name">{user?.userName}</span>
         </li>
         <li>
-          <FontAwesomeIcon icon={faRegistered} />
+          <FontAwesomeIcon icon={faRegistered} onClick={onRegistrationFormToggle} />
           <span className="menu-name">register</span>
+          <Registration
+            isOpen={registrationFormOpen}
+            onClickToggle={onRegistrationFormToggle}
+          />
         </li>
       </ul>
     </>
