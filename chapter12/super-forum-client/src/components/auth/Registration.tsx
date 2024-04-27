@@ -7,8 +7,9 @@ import {
 import "./../../App.css";
 import "./Registration.css";
 import {
-  UserRegistrationState,
-  userRegistrationReducer,
+  actions,
+  getInitialState,
+  reducer,
 } from "./common/UserRegistrationReducer";
 
 interface RegistrationProps {
@@ -25,22 +26,14 @@ export const Registration: FC<RegistrationProps> = ({
   const [isRegisterBtnEnabled, setRegisterBtnEnabled] =
     useState<boolean>(false);
 
-  const initialUserRegistrationState: UserRegistrationState = {
-    username: "bob",
-    password: "",
-    email: "admin@google.com",
-    passwordConfirmation: "",
-    resultMessage: "",
-  };
-
   const [
     { username, password, email, passwordConfirmation, resultMessage },
     dispatch,
-  ] = useReducer(userRegistrationReducer, initialUserRegistrationState);
+  ] = useReducer(reducer, getInitialState());
 
   const allowRegistration = (msg: string, enabled: boolean) => {
     setRegisterBtnEnabled(enabled);
-    dispatch({ payload: msg, type: "resultMessage" });
+    dispatch(actions.setResultMessage(msg));
   };
 
   const checkPasswordsMatch = (
@@ -58,7 +51,7 @@ export const Registration: FC<RegistrationProps> = ({
 
   const onUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value: string = e.target.value;
-    dispatch({ payload: value, type: "username" });
+    dispatch(actions.setUsername(value));
     if (!value) {
       allowRegistration("Username can not be empty", false);
     } else {
@@ -68,7 +61,7 @@ export const Registration: FC<RegistrationProps> = ({
 
   const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value: string = e.target.value;
-    dispatch({ payload: value, type: "email" });
+    dispatch(actions.setEmail(value));
     if (!value) {
       allowRegistration("Email can not be empty", false);
     } else {
@@ -78,7 +71,7 @@ export const Registration: FC<RegistrationProps> = ({
 
   const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value: string = e.target.value;
-    dispatch({ payload: value, type: "password" });
+    dispatch(actions.setPassword(value));
     const passwordTestResult: PasswordTestResult = isPasswordValid(value);
     if (!passwordTestResult.isValid) {
       allowRegistration(passwordTestResult.message, false);
@@ -91,7 +84,7 @@ export const Registration: FC<RegistrationProps> = ({
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const value: string = e.target.value;
-    dispatch({ payload: value, type: "passwordConfirmation" });
+    dispatch(actions.setPasswordConfirmation(value));
     checkPasswordsMatch(password, value);
   };
 
