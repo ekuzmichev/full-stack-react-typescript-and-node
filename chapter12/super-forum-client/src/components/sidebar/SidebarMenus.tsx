@@ -1,10 +1,10 @@
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faRegistered, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { UserProfile, setUserProfile } from "../../reducers/user-reducer";
 import { AppState, useAppSelector } from "../../store";
-import "./SidebarMenus.css"
+import "./SidebarMenus.css";
 
 export const SidebarMenus = () => {
   const user: UserProfile | null = useAppSelector(
@@ -25,8 +25,14 @@ export const SidebarMenus = () => {
   return (
     <>
       <ul>
-        <FontAwesomeIcon icon={faUser} />
-        <span className="menu-name">{user?.userName}</span>
+        <li>
+          <FontAwesomeIcon icon={faUser} />
+          <span className="menu-name">{user?.userName}</span>
+        </li>
+        <li>
+          <FontAwesomeIcon icon={faRegistered} />
+          <span className="menu-name">register</span>
+        </li>
       </ul>
     </>
   );
