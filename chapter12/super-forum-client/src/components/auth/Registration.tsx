@@ -1,50 +1,37 @@
-import React, { FC, useReducer, useState } from "react";
+import React, { FC, useReducer } from "react";
 import ReactModal from "react-modal";
 import {
   PasswordTestResult,
   isPasswordValid,
 } from "../../common/validators/PasswordValidator";
+import { ModalProps } from "../types/ModalProps";
 import "./../../App.css";
 import "./Registration.css";
-import {
-  actions,
-  getInitialState,
-  reducer,
-} from "./common/UserRegistrationReducer";
+import { allowSubmit } from "./common/Helpers";
+import { actions, getInitialState, reducer } from "./common/UserReducer";
 
-interface RegistrationProps {
-  isOpen: boolean;
-  onClickToggle: (
-    e: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>
-  ) => void;
-}
-
-export const Registration: FC<RegistrationProps> = ({
-  isOpen,
-  onClickToggle,
-}) => {
-  const [isRegisterBtnEnabled, setRegisterBtnEnabled] =
-    useState<boolean>(false);
-
+export const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
   const [
-    { username, password, email, passwordConfirmation, resultMessage },
+    {
+      username,
+      password,
+      email,
+      passwordConfirmation,
+      resultMessage,
+      isSubmitEnabled,
+    },
     dispatch,
   ] = useReducer(reducer, getInitialState());
-
-  const allowRegistration = (msg: string, enabled: boolean) => {
-    setRegisterBtnEnabled(enabled);
-    dispatch(actions.setResultMessage(msg));
-  };
 
   const checkPasswordsMatch = (
     password: string,
     passwordConfirmation: string
   ): boolean => {
     if (password !== passwordConfirmation) {
-      allowRegistration("Passwords do not match", false);
+      allowSubmit(dispatch, "Passwords do not match", false);
       return false;
     } else {
-      allowRegistration("", true);
+      allowSubmit(dispatch, "", true);
       return true;
     }
   };
@@ -53,9 +40,9 @@ export const Registration: FC<RegistrationProps> = ({
     const value: string = e.target.value;
     dispatch(actions.setUsername(value));
     if (!value) {
-      allowRegistration("Username can not be empty", false);
+      allowSubmit(dispatch, "Username can not be empty", false);
     } else {
-      allowRegistration("", true);
+      allowSubmit(dispatch, "", true);
     }
   };
 
@@ -63,9 +50,9 @@ export const Registration: FC<RegistrationProps> = ({
     const value: string = e.target.value;
     dispatch(actions.setEmail(value));
     if (!value) {
-      allowRegistration("Email can not be empty", false);
+      allowSubmit(dispatch, "Email can not be empty", false);
     } else {
-      allowRegistration("", true);
+      allowSubmit(dispatch, "", true);
     }
   };
 
@@ -74,7 +61,7 @@ export const Registration: FC<RegistrationProps> = ({
     dispatch(actions.setPassword(value));
     const passwordTestResult: PasswordTestResult = isPasswordValid(value);
     if (!passwordTestResult.isValid) {
-      allowRegistration(passwordTestResult.message, false);
+      allowSubmit(dispatch, passwordTestResult.message, false);
       return;
     }
     checkPasswordsMatch(passwordConfirmation, value);
@@ -139,7 +126,7 @@ export const Registration: FC<RegistrationProps> = ({
             <button
               style={{ marginLeft: ".5em" }}
               className="action-btn"
-              disabled={!isRegisterBtnEnabled}
+              disabled={!isSubmitEnabled}
               onClick={onRegisterBtnClick}
             >
               Register

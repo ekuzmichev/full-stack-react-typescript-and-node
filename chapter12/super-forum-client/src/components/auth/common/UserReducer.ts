@@ -1,23 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface UserRegistrationState {
+interface UserState {
   username: string;
   password: string;
   passwordConfirmation: string;
   email: string;
   resultMessage: string;
+  isSubmitEnabled: boolean;
 }
 
-const initialState: UserRegistrationState = {
+const initialState: UserState = {
   username: "bob",
   password: "",
   email: "admin@google.com",
   passwordConfirmation: "",
   resultMessage: "",
+  isSubmitEnabled: false,
 };
 
-const userRegistrationReducer = createSlice({
-  name: "userRegistration",
+const userReducer = createSlice({
+  name: "user",
   initialState,
   reducers: {
     setUsername: (state, action: { payload: string }) => {
@@ -35,7 +37,10 @@ const userRegistrationReducer = createSlice({
     setResultMessage: (state, action: { payload: string }) => {
       state.resultMessage = action.payload;
     },
+    setSubmitEnabled: (state, action: { payload: boolean }) => {
+      state.isSubmitEnabled = action.payload;
+    },
   },
 });
 
-export const { getInitialState, reducer, actions } = userRegistrationReducer;
+export const { getInitialState, reducer, actions } = userReducer;
