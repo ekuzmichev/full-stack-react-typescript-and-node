@@ -1,39 +1,13 @@
 import React, { FC, useReducer } from "react";
-import ReactModal from "react-modal";
-import {
-  PasswordTestResult,
-  isPasswordValid,
-} from "../../common/validators/PasswordValidator";
 import { ModalProps } from "../types/ModalProps";
 import "./../../App.css";
-import "./Registration.css";
 import { allowSubmit } from "./common/Helpers";
 import { actions, getInitialState, reducer } from "./common/UserReducer";
+import ReactModal from "react-modal";
 
-export const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
-  const [
-    {
-      username,
-      password,
-      passwordConfirmation,
-      resultMessage,
-      isSubmitEnabled,
-    },
-    dispatch,
-  ] = useReducer(reducer, getInitialState());
-
-  const checkPasswordsMatch = (
-    password: string,
-    passwordConfirmation: string
-  ): boolean => {
-    if (password !== passwordConfirmation) {
-      allowSubmit(dispatch, "Passwords do not match", false);
-      return false;
-    } else {
-      allowSubmit(dispatch, "", true);
-      return true;
-    }
-  };
+export const Login: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
+  const [{ username, password, resultMessage, isSubmitEnabled }, dispatch] =
+    useReducer(reducer, getInitialState());
 
   const onUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value: string = e.target.value;
@@ -48,23 +22,14 @@ export const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
   const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value: string = e.target.value;
     dispatch(actions.setPassword(value));
-    const passwordTestResult: PasswordTestResult = isPasswordValid(value);
-    if (!passwordTestResult.isValid) {
-      allowSubmit(dispatch, passwordTestResult.message, false);
-      return;
+    if (!value) {
+      allowSubmit(dispatch, "Password cannot be empty", false);
+    } else {
+      allowSubmit(dispatch, "", true);
     }
-    checkPasswordsMatch(passwordConfirmation, value);
   };
 
-  const onPasswordConfirmationChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const value: string = e.target.value;
-    dispatch(actions.setPasswordConfirmation(value));
-    checkPasswordsMatch(password, value);
-  };
-
-  const onRegisterBtnClick = (
+  const onLoginBtnClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
@@ -100,25 +65,16 @@ export const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
               onChange={onPasswordChange}
             />
           </div>
-          <div>
-            <label>password confirmation</label>
-            <input
-              type="password"
-              placeholder="Password Confirmation"
-              value={passwordConfirmation}
-              onChange={onPasswordConfirmationChange}
-            />
-          </div>
         </div>
-        <div className="form-buttons">
+        <div className="form-buttons form-buttons-sm">
           <div className="form-btn-left">
             <button
               style={{ marginLeft: ".5em" }}
               className="action-btn"
               disabled={!isSubmitEnabled}
-              onClick={onRegisterBtnClick}
+              onClick={onLoginBtnClick}
             >
-              Register
+              Login
             </button>
             <button
               style={{ marginLeft: ".5em" }}

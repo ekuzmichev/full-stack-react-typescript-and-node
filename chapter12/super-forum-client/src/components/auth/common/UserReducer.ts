@@ -10,9 +10,9 @@ interface UserState {
 }
 
 const initialState: UserState = {
-  username: "bob",
+  username: "",
   password: "",
-  email: "admin@google.com",
+  email: "",
   passwordConfirmation: "",
   resultMessage: "",
   isSubmitEnabled: false,
