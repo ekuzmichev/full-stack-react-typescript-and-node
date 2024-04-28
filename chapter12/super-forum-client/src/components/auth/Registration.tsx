@@ -1,7 +1,7 @@
 import React, { FC, useReducer } from "react";
 import ReactModal from "react-modal";
 import {
-  PasswordTestResult,
+  PasswordValidationResult,
   isPasswordValid,
 } from "../../common/validators/PasswordValidator";
 import { ModalProps } from "../types/ModalProps";
@@ -48,7 +48,7 @@ export const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
   const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value: string = e.target.value;
     dispatch(actions.setPassword(value));
-    const passwordTestResult: PasswordTestResult = isPasswordValid(value);
+    const passwordTestResult: PasswordValidationResult = isPasswordValid(value);
     if (!passwordTestResult.isValid) {
       allowSubmit(dispatch, passwordTestResult.message, false);
       return;
