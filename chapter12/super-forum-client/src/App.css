@@ -3,6 +3,7 @@
 
   --border-color: gray;
   --border: solid 0.1em var(--border-color);
+  --input-border-color: #e6ebf1;
 }
 
 .App {
@@ -107,6 +108,12 @@ select {
   grid-column: 2;
   margin-left: 2em;
   padding-top: 0.8em;
+}
+
+.title-bar {
+  margin-bottom: 0.4em;
+  padding-bottom: 0.25em !important;
+  border-bottom: 3px solid var(--input-border-color);
 }
 
 @media screen and (orientation: portrait) and (max-width: 768px) {
