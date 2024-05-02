@@ -7,7 +7,7 @@ import "./Nav.css";
 import ReactModal from "react-modal";
 import { SidebarMenus } from "../sidebar/SidebarMenus";
 
-const Nav = () => {
+export const Nav = () => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const { width } = useWindowDimensions();
@@ -54,5 +54,3 @@ const Nav = () => {
     </>
   );
 };
-
-export default Nav;

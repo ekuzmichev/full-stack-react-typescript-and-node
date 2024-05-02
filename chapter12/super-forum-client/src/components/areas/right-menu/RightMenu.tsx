@@ -1,7 +1,7 @@
 import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 
-const RightMenu = () => {
+export const RightMenu = () => {
   const { width } = useWindowDimensions();
 
   if (width <= MIN_DESKTOP_WINDOW_WIDTH) {
@@ -10,5 +10,3 @@ const RightMenu = () => {
 
   return <div className="right-menu">Right Menu</div>;
 };
-
-export default RightMenu;

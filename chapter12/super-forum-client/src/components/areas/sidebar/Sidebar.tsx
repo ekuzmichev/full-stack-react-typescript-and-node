@@ -2,7 +2,7 @@ import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { SidebarMenus } from "./SidebarMenus";
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const { width } = useWindowDimensions();
 
   if (width <= MIN_DESKTOP_WINDOW_WIDTH) {
@@ -15,5 +15,3 @@ const Sidebar = () => {
     </div>
   );
 };
-
-export default Sidebar;

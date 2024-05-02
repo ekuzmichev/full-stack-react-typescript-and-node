@@ -1,4 +1,4 @@
-export default class ThreadItem {
+export class ThreadItem {
   constructor(
     public id: string,
     public views: number,

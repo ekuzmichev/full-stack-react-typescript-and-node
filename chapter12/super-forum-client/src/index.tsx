@@ -2,10 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import ErrorBoundary from "./components/ErrorBoundary";
+import { App } from "./App";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 import "./index.css";
-import reportWebVitals from "./reportWebVitals";
+import { reportWebVitals } from "./reportWebVitals";
 import { store } from "./store";
 
 const router = createBrowserRouter([

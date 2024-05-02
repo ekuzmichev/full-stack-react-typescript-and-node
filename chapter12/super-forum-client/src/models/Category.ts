@@ -1,3 +1,3 @@
-export default class Category {
+export class Category {
   constructor(public id: string, public name: string) {}
 }

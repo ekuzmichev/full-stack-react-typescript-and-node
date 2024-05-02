@@ -1,4 +1,4 @@
-export default class CategoryThread {
+export class CategoryThread {
   constructor(
     public threadId: string,
     public category: string,

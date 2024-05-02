@@ -1,6 +1,6 @@
-import Category from "../models/Category";
-import CategoryThread from "../models/CategoryThread";
-import Thread from "../models/Thread";
+import { Category } from "../models/Category";
+import { CategoryThread } from "../models/CategoryThread";
+import { Thread } from "../models/Thread";
 
 export async function getCategories(): Promise<Category[]> {
   const promise = new Promise<Category[]>((res, rej) => {

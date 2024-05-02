@@ -1,7 +1,7 @@
-import Category from "./Category";
-import ThreadItem from "./ThreadItem";
+import { Category } from "./Category";
+import { ThreadItem } from "./ThreadItem";
 
-export default class Thread {
+export class Thread {
   constructor(
     public id: string,
     public views: number,

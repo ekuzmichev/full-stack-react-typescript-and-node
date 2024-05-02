@@ -1,12 +1,12 @@
 import React, { FC } from "react";
-import Category from "../../../models/Category";
+import { Category } from "../../../models/Category";
 import "./MainHeader.css";
 
 interface MainHeaderProps {
   category?: Category;
 }
 
-const MainHeader: FC<MainHeaderProps> = ({ category }) => {
+export const MainHeader: FC<MainHeaderProps> = ({ category }) => {
   return (
     <div className="main-header">
       <div
@@ -18,5 +18,3 @@ const MainHeader: FC<MainHeaderProps> = ({ category }) => {
     </div>
   );
 };
-
-export default MainHeader;
