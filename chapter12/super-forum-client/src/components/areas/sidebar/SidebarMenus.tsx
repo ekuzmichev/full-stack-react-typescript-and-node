@@ -7,11 +7,11 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { UserProfile, setUserProfile } from "../../reducers/user-reducer";
-import { AppState, useAppSelector } from "../../store";
-import { Login } from "../auth/Login";
-import { Logout } from "../auth/Logout";
-import { Registration } from "../auth/Registration";
+import { UserProfile, setUserProfile } from "../../../reducers/user-reducer";
+import { AppState, useAppSelector } from "../../../store";
+import { Login } from "../../auth/Login";
+import { Logout } from "../../auth/Logout";
+import { Registration } from "../../auth/Registration";
 import "./SidebarMenus.css";
 
 export const SidebarMenus = () => {

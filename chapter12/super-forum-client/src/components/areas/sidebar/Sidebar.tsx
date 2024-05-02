@@ -1,5 +1,5 @@
-import { MIN_DESKTOP_WINDOW_WIDTH } from "../../constants";
-import { useWindowDimensions } from "../../hooks/useWindowDimensions";
+import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
+import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { SidebarMenus } from "./SidebarMenus";
 
 const Sidebar = () => {

@@ -1,8 +1,8 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { MIN_DESKTOP_WINDOW_WIDTH } from "../../constants";
-import { useWindowDimensions } from "../../hooks/useWindowDimensions";
+import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
+import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import "./Nav.css";
 import ReactModal from "react-modal";
 import { SidebarMenus } from "../sidebar/SidebarMenus";
