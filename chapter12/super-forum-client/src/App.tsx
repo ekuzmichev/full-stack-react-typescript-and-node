@@ -4,7 +4,6 @@ import { Main } from "./components/areas/main/Main";
 import { Nav } from "./components/areas/nav/Nav";
 import { RightMenu } from "./components/areas/right-menu/RightMenu";
 import { Sidebar } from "./components/areas/sidebar/Sidebar";
-// import Home from "./components/routes/Home";
 
 export function App() {
   return (
