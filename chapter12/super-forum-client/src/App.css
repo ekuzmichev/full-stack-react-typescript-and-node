@@ -6,42 +6,12 @@
   --input-border-color: #e6ebf1;
 }
 
-.App {
+.screen-root-container {
   margin: 0 auto;
   max-width: 1200px;
-  display: grid;
-  grid-template-columns: 0.7fr 0.9fr 1.5fr 0.9fr;
-  grid-template-rows: 2.75rem 3fr;
-  grid-template-areas:
-    "nav nav nav nav"
-    "sidebar left-menu content right-menu";
-  gap: 0.75rem 0.4rem;
-}
-
-.nav {
-  grid-area: nav;
-}
-
-.sidebar {
-  min-height: var(--min-screen-height);
-  grid-area: sidebar;
-  background-color: aliceblue;
-}
-
-.left-menu {
-  grid-area: left-menu;
-  background-color: skyblue;
-}
-
-.content {
-  min-height: var(--min-screen-height);
-  grid-area: content;
-  background-color: blanchedalmond;
-}
-
-.right-menu {
-  grid-area: right-menu;
-  background-color: coral;
+  margin-bottom: 2em;
+  border: var(--border);
+  border-radius: 0.3em;
 }
 
 .modal-menu {
@@ -117,13 +87,6 @@ select {
 }
 
 @media screen and (orientation: portrait) and (max-width: 768px) {
-  .App {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "nav"
-      "content";
-  }
-
   .modal-menu {
     min-width: 60px;
     left: 0.5em;
