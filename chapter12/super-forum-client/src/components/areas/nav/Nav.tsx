@@ -47,10 +47,10 @@ export const Nav = () => {
       >
         <SidebarMenus />
       </ReactModal>
-      <div className="nav">
+      <nav>
         {getMobileMenu()}
         <strong>SuperForum</strong>
-      </div>
+      </nav>
     </>
   );
 };
