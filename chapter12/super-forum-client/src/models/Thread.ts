@@ -9,10 +9,10 @@ export class Thread {
     public body: string,
     public userName: string,
     public userId: string,
-    public points: number,
+    public points: number, // Total number of likes
     public createdOn: Date,
     public lastModifiedOn: Date,
-    public threadItems: Array<ThreadItem>,
+    public threadItems: ThreadItem[],
     public category: Category
   ) {}
 }
