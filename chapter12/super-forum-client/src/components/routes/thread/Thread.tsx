@@ -9,7 +9,7 @@ import "./Thread.css";
 import { ThreadCategory } from "./ThreadCategory";
 import { ThreadHeader } from "./ThreadHeader";
 // import { ThreadResponsesBuilder } from "./ThreadResponsesBuilder";
-// import { ThreadTitle } from "./ThreadTitle";
+import { ThreadTitle } from "./ThreadTitle";
 
 export const Thread = () => {
   const [thread, setThread] = useState<ThreadModel | undefined>();
@@ -38,7 +38,7 @@ export const Thread = () => {
             title={thread?.title}
           />
           <ThreadCategory categoryName={thread?.category?.name} />
-          {/* <ThreadTitle title={thread?.title} /> */}
+          <ThreadTitle title={thread?.title} />
           {/* <ThreadBody body={thread?.body} /> */}
         </div>
         <div className="thread-content-points-container">
