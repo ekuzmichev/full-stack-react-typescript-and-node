@@ -5,7 +5,7 @@ import { getThreadById } from "../../../services/DataService";
 import { Nav } from "../../areas/nav/Nav";
 // import { ThreadPointsBar } from "../../points/ThreadPointsBar";
 import "./Thread.css";
-// import { ThreadBody } from "./ThreadBody";
+import { ThreadBody } from "./ThreadBody";
 import { ThreadCategory } from "./ThreadCategory";
 import { ThreadHeader } from "./ThreadHeader";
 // import { ThreadResponsesBuilder } from "./ThreadResponsesBuilder";
@@ -39,7 +39,7 @@ export const Thread = () => {
           />
           <ThreadCategory categoryName={thread?.category?.name} />
           <ThreadTitle title={thread?.title} />
-          {/* <ThreadBody body={thread?.body} /> */}
+          <ThreadBody body={thread?.body} />
         </div>
         <div className="thread-content-points-container">
           {/* <ThreadPointsBar
