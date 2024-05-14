@@ -1,12 +1,13 @@
-import { faEye, faHeart, faReplyAll } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faReplyAll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Thread } from "../../../models/Thread";
-import "./ThreadCard.css";
 import { ThreadPointsBar } from "../../points/ThreadPointsBar";
+import { ThreadPointsInline } from "../../points/ThreadPointsInline";
+import "./ThreadCard.css";
 
 interface ThreadCardProps {
   thread: Thread;
@@ -21,22 +22,6 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
 
   const onShowThreadClick = (e: React.MouseEvent<HTMLDivElement>): void => {
     navigate(`/thread/${thread.id}`);
-  };
-
-  const getPoints = (thread: Thread): React.ReactNode => {
-    if (isMobile) {
-      return (
-        <label style={{ marginRight: ".75em", marginTop: ".25em" }}>
-          {thread.points ?? 0}
-          <FontAwesomeIcon
-            icon={faHeart}
-            className="points-icon"
-            style={{ marginLeft: ".2em" }}
-          />
-        </label>
-      );
-    }
-    return null;
   };
 
   const getResponses = (thread: Thread): React.ReactNode => {
@@ -92,7 +77,9 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
               </label>
             </span>
             <span>
-              {getPoints(thread)}
+              {isMobile ? (
+                <ThreadPointsInline points={thread?.points || 0} />
+              ) : null}
               {getResponses(thread)}
             </span>
           </div>
