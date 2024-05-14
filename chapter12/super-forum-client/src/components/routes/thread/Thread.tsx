@@ -8,7 +8,7 @@ import "./Thread.css";
 import { ThreadBody } from "./ThreadBody";
 import { ThreadCategory } from "./ThreadCategory";
 import { ThreadHeader } from "./ThreadHeader";
-// import { ThreadResponsesBuilder } from "./ThreadResponsesBuilder";
+import { ThreadResponsesBuilder } from "./ThreadResponsesBuilder";
 import { ThreadTitle } from "./ThreadTitle";
 
 export const Thread = () => {
@@ -50,7 +50,7 @@ export const Thread = () => {
       </div>
       <div className="thread-content-response-container">
         <hr className="thread-section-divider" />
-        {/* <ThreadResponsesBuilder threadItems={thread?.threadItems} /> */}
+        <ThreadResponsesBuilder threadItems={thread?.threadItems} />
       </div>
     </div>
   );
