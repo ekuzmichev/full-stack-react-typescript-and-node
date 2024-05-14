@@ -41,7 +41,7 @@ export const SidebarMenus = () => {
         <li>
           <FontAwesomeIcon icon={faUser} />
           <span className="menu-name">
-            <Link to={`/userprofile/${user?.id}`}>{user?.userName}</Link>
+            <Link to={`/userProfile/${user?.id}`}>{user?.userName}</Link>
           </span>
         </li>
         <li>
