@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-interface UserState {
+export interface UserState {
   username: string;
   password: string;
   passwordConfirmation: string;
-  email: string;
   resultMessage: string;
   isSubmitEnabled: boolean;
 }
@@ -12,7 +11,6 @@ interface UserState {
 const initialState: UserState = {
   username: "",
   password: "",
-  email: "",
   passwordConfirmation: "",
   resultMessage: "",
   isSubmitEnabled: false,
@@ -30,9 +28,6 @@ const userReducer = createSlice({
     },
     setPasswordConfirmation: (state, action: { payload: string }) => {
       state.passwordConfirmation = action.payload;
-    },
-    setEmail: (state, action: { payload: string }) => {
-      state.email = action.payload;
     },
     setResultMessage: (state, action: { payload: string }) => {
       state.resultMessage = action.payload;
