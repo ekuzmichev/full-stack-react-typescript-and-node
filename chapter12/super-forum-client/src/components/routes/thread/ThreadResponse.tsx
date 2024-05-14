@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { RichEditor } from "../../editor/RichEditor";
-// import { ThreadPointsInline } from "../../points/ThreadPointsInline";
+import { ThreadPointsInline } from "../../points/ThreadPointsInline";
 import { UserNameAndTime } from "./UserNameAndTime";
 
 interface ThreadResponseProps {
@@ -21,7 +21,7 @@ export const ThreadResponse: FC<ThreadResponseProps> = ({
       <div>
         <UserNameAndTime userName={userName} lastModifiedOn={lastModifiedOn} />
         <span style={{ marginLeft: "1em" }}>
-          {/* <ThreadPointsInline points={points || 0} /> */}
+          <ThreadPointsInline points={points || 0} />
         </span>
       </div>
       <div className="thread-body-editor">

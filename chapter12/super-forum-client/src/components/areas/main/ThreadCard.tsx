@@ -6,6 +6,7 @@ import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Thread } from "../../../models/Thread";
 import "./ThreadCard.css";
+import { ThreadPointsBar } from "../../points/ThreadPointsBar";
 
 interface ThreadCardProps {
   thread: Thread;
@@ -54,27 +55,6 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
     return null;
   };
 
-  const getPointsNonMobile = (): React.ReactNode => {
-    if (!isMobile) {
-      return (
-        <div className="threadcard-points">
-          <div className="threadcard-points-item">
-            {thread.points ?? 0}
-            <br />
-            <FontAwesomeIcon icon={faHeart} className="points-icon" />
-          </div>
-          <div
-            className="threadcard-points-item"
-            style={{ marginBottom: ".75em" }}
-          >
-            {thread?.threadItems?.length ?? null}
-            <FontAwesomeIcon icon={faReplyAll} className="points-icon" />
-          </div>
-        </div>
-      );
-    }
-  };
-
   return (
     <section className="panel threadcard-container">
       <div className="threadcard-txt-container">
@@ -118,7 +98,10 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
           </div>
         </div>
       </div>
-      {getPointsNonMobile()}
+      <ThreadPointsBar
+        points={thread?.points || 0}
+        responseCount={thread?.threadItems?.length}
+      />
     </section>
   );
 };

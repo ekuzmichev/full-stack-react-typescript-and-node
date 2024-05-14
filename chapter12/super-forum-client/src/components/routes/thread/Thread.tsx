@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Thread as ThreadModel } from "../../../models/Thread";
 import { getThreadById } from "../../../services/DataService";
 import { Nav } from "../../areas/nav/Nav";
-// import { ThreadPointsBar } from "../../points/ThreadPointsBar";
+import { ThreadPointsBar } from "../../points/ThreadPointsBar";
 import "./Thread.css";
 import { ThreadBody } from "./ThreadBody";
 import { ThreadCategory } from "./ThreadCategory";
@@ -42,10 +42,10 @@ export const Thread = () => {
           <ThreadBody body={thread?.body} />
         </div>
         <div className="thread-content-points-container">
-          {/* <ThreadPointsBar
+          <ThreadPointsBar
             points={thread?.points || 0}
             responseCount={thread?.threadItems?.length}
-          /> */}
+          />
         </div>
       </div>
       <div className="thread-content-response-container">
