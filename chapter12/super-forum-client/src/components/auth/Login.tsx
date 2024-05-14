@@ -1,13 +1,26 @@
-import React, { FC, useReducer } from "react";
+import React, { FC, useEffect, useReducer } from "react";
+import ReactModal from "react-modal";
+import { useDispatch } from "react-redux";
+import { UserProfile, setUserProfile } from "../../reducers/user-reducer";
 import { ModalProps } from "../types/ModalProps";
 import "./../../App.css";
 import { allowSubmit } from "./common/Helpers";
 import { actions, getInitialState, reducer } from "./common/UserReducer";
-import ReactModal from "react-modal";
 
 export const Login: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
+  const reduxDispatch = useDispatch();
+
   const [{ username, password, resultMessage, isSubmitEnabled }, dispatch] =
     useReducer(reducer, getInitialState());
+
+  useEffect(() => {
+    const userProfile: UserProfile = {
+      id: 1,
+      userName: "testUser",
+    };
+
+    reduxDispatch(setUserProfile(userProfile));
+  }, [reduxDispatch]);
 
   const onUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value: string = e.target.value;
