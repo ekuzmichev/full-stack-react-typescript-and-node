@@ -23,10 +23,10 @@ export const PasswordComparison: FC<PasswordComparisonProps> = ({
     passwordConfirmation: string
   ): boolean => {
     if (password !== passwordConfirmation) {
-      allowSubmit(dispatch, "Passwords do not match", false);
+      allowSubmit(dispatch, false, "Passwords do not match");
       return false;
     } else {
-      allowSubmit(dispatch, "", true);
+      allowSubmit(dispatch, true);
       return true;
     }
   };
@@ -36,7 +36,7 @@ export const PasswordComparison: FC<PasswordComparisonProps> = ({
     dispatch(actions.setPassword(value));
     const passwordTestResult: PasswordValidationResult = isPasswordValid(value);
     if (!passwordTestResult.isValid) {
-      allowSubmit(dispatch, passwordTestResult.message, false);
+      allowSubmit(dispatch, false, passwordTestResult.message);
       return;
     }
     checkPasswordsMatch(passwordConfirmation, value);

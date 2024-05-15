@@ -26,9 +26,9 @@ export const Login: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
     const value: string = e.target.value;
     dispatch(actions.setUsername(value));
     if (!value) {
-      allowSubmit(dispatch, "Username can not be empty", false);
+      allowSubmit(dispatch, false, "Username can not be empty");
     } else {
-      allowSubmit(dispatch, "", true);
+      allowSubmit(dispatch, true);
     }
   };
 
@@ -36,9 +36,9 @@ export const Login: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
     const value: string = e.target.value;
     dispatch(actions.setPassword(value));
     if (!value) {
-      allowSubmit(dispatch, "Password cannot be empty", false);
+      allowSubmit(dispatch, false, "Password cannot be empty");
     } else {
-      allowSubmit(dispatch, "", true);
+      allowSubmit(dispatch, true);
     }
   };
 

@@ -23,9 +23,9 @@ export const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
     const value: string = e.target.value;
     dispatch(actions.setUsername(value));
     if (!value) {
-      allowSubmit(dispatch, "Username can not be empty", false);
+      allowSubmit(dispatch, false, "Username can not be empty");
     } else {
-      allowSubmit(dispatch, "", true);
+      allowSubmit(dispatch, true);
     }
   };
 

@@ -4,9 +4,9 @@ import { actions } from "./UserReducer";
 
 export const allowSubmit = (
   dispatch: Dispatch<Action>,
-  msg: string,
-  enabled: boolean
+  enabled: boolean,
+  msg?: string
 ) => {
   dispatch(actions.setSubmitEnabled(enabled));
-  dispatch(actions.setResultMessage(msg));
+  msg?.trim() && dispatch(actions.setResultMessage(msg));
 };
