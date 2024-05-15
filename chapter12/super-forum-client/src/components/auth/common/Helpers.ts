@@ -6,7 +6,7 @@ export const allowSubmit = (
   dispatch: Dispatch<Action>,
   enabled: boolean,
   msg?: string
-) => {
+): void => {
   dispatch(actions.setSubmitEnabled(enabled));
   msg?.trim() && dispatch(actions.setResultMessage(msg));
 };

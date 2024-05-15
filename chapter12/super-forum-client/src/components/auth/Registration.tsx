@@ -4,10 +4,10 @@ import { ModalProps } from "../types/ModalProps";
 import "./../../App.css";
 import "./Registration.css";
 import { allowSubmit } from "./common/Helpers";
-import { PasswordComparison } from "./common/PasswordComparison";
+import { PasswordForm } from "./common/PasswordForm";
 import { actions, getInitialState, reducer } from "./common/UserReducer";
 
-export const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
+export const Registration: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
   const [
     {
       username,
@@ -33,20 +33,20 @@ export const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    onClickToggle(e);
+    onVisibilityToggle(e);
   };
 
   const onCancelBtnClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    onClickToggle(e);
+    onVisibilityToggle(e);
   };
 
   return (
     <ReactModal
       className="modal-menu"
       isOpen={isOpen}
-      onRequestClose={onClickToggle}
+      onRequestClose={onVisibilityToggle}
       shouldCloseOnOverlayClick={true}
       ariaHideApp={false}
     >
@@ -56,7 +56,7 @@ export const Registration: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
             <label>username</label>
             <input type="text" value={username} onChange={onUsernameChange} />
           </div>
-          <PasswordComparison
+          <PasswordForm
             password={password}
             passwordConfirmation={passwordConfirmation}
             dispatch={dispatch}

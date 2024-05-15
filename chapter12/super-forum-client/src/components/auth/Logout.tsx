@@ -3,25 +3,25 @@ import ReactModal from "react-modal";
 import { ModalProps } from "../types/ModalProps";
 import "./Logout.css";
 
-export const Logout: FC<ModalProps> = ({ isOpen, onClickToggle }) => {
+export const Logout: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
   const onLogoutBtnClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    onClickToggle(e);
+    onVisibilityToggle(e);
   };
 
   const onCancelBtnClick = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    onClickToggle(e);
+    onVisibilityToggle(e);
   };
 
   return (
     <ReactModal
       className="modal-menu"
       isOpen={isOpen}
-      onRequestClose={onClickToggle}
+      onRequestClose={onVisibilityToggle}
       shouldCloseOnOverlayClick={true}
     >
       <form>

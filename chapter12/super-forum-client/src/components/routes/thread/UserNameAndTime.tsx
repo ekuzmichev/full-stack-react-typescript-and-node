@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { getTimePastIfLessThanDay } from "../../../common/dates";
+import { DateTimeUtils } from "../../../common/DateTimeUtils";
 
 interface UserNameAndTimeProps {
   userName?: string;
@@ -14,7 +14,9 @@ export const UserNameAndTime: FC<UserNameAndTimeProps> = ({
     <span>
       <strong>{userName}</strong>
       <label style={{ marginLeft: "1em" }}>
-        {lastModifiedOn ? getTimePastIfLessThanDay(lastModifiedOn) : ""}
+        {lastModifiedOn
+          ? DateTimeUtils.getTimePastIfLessThanDay(lastModifiedOn)
+          : ""}
       </label>
     </span>
   );

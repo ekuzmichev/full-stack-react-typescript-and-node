@@ -7,7 +7,7 @@ import { UserState } from "../../../reducers/user-reducer";
 import { getUserThreads } from "../../../services/DataService";
 import { AppState } from "../../../store";
 import { Nav } from "../../areas/nav/Nav";
-import { PasswordComparison } from "../../auth/common/PasswordComparison";
+import { PasswordForm } from "../../auth/common/PasswordForm";
 import { actions, reducer as userReducer } from "../../auth/common/UserReducer";
 import "./UserProfile.css";
 
@@ -85,7 +85,7 @@ export const UserProfile = () => {
         </div>
         <div className="userprofile-password">
           <div>
-            <PasswordComparison
+            <PasswordForm
               dispatch={dispatch}
               password={password}
               passwordConfirmation={passwordConfirmation}

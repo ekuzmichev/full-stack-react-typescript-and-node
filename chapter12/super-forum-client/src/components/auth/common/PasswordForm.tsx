@@ -7,13 +7,13 @@ import {
 import { allowSubmit } from "./Helpers";
 import { actions } from "./UserReducer";
 
-interface PasswordComparisonProps {
+interface PasswordFormProps {
   dispatch: React.Dispatch<Action>;
   password: string;
   passwordConfirmation: string;
 }
 
-export const PasswordComparison: FC<PasswordComparisonProps> = ({
+export const PasswordForm: FC<PasswordFormProps> = ({
   dispatch,
   password,
   passwordConfirmation,

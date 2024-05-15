@@ -23,15 +23,15 @@ export const SidebarMenus = () => {
     (state: AppState) => state.user.userProfile
   );
 
-  const onRegistrationFormToggle = () => {
+  const onRegistrationFormVisibilityToggle = () => {
     setRegistrationFormOpen(!registrationFormOpen);
   };
 
-  const onLoginFormToggle = () => {
+  const onLoginFormVisibilityToggle = () => {
     setLoginFormOpen(!loginFormOpen);
   };
 
-  const onLogoutFormToggle = () => {
+  const onLogoutFormVisibilityToggle = () => {
     setLogoutFormOpen(!logoutFormOpen);
   };
 
@@ -46,27 +46,27 @@ export const SidebarMenus = () => {
         </li>
         <li>
           <FontAwesomeIcon icon={faRegistered} />
-          <span onClick={onRegistrationFormToggle} className="menu-name">
+          <span onClick={onRegistrationFormVisibilityToggle} className="menu-name">
             register
           </span>
           <Registration
             isOpen={registrationFormOpen}
-            onClickToggle={onRegistrationFormToggle}
+            onVisibilityToggle={onRegistrationFormVisibilityToggle}
           />
         </li>
         <li>
           <FontAwesomeIcon icon={faSignInAlt} />
-          <span onClick={onLoginFormToggle} className="menu-name">
+          <span onClick={onLoginFormVisibilityToggle} className="menu-name">
             login
           </span>
-          <Login isOpen={loginFormOpen} onClickToggle={onLoginFormToggle} />
+          <Login isOpen={loginFormOpen} onVisibilityToggle={onLoginFormVisibilityToggle} />
         </li>
         <li>
           <FontAwesomeIcon icon={faSignOutAlt} />
-          <span onClick={onLogoutFormToggle} className="menu-name">
+          <span onClick={onLogoutFormVisibilityToggle} className="menu-name">
             logout
           </span>
-          <Logout isOpen={logoutFormOpen} onClickToggle={onLogoutFormToggle} />
+          <Logout isOpen={logoutFormOpen} onVisibilityToggle={onLogoutFormVisibilityToggle} />
         </li>
       </ul>
     </>
