@@ -7,20 +7,7 @@ module.exports = {
     plugins: {
       add: [new VanillaExtractPlugin()],
     },
-  },
-  jest: {
-    configure: (jestConfig) => {
-      jestConfig.transform = {
-        "\\.css\\.ts$": "@vanilla-extract/jest-transform",
-        ...jestConfig.transform,
-      };
-      return jestConfig;
-    },
-  },
-  webpack: {
     configure: (webpackConfig) => {
-      // ...
-
       const moduleScopePlugin = webpackConfig.resolve.plugins.find(
         (plugin) => plugin instanceof ModuleScopePlugin
       );
@@ -29,6 +16,15 @@ module.exports = {
       );
 
       return webpackConfig;
+    },
+  },
+  jest: {
+    configure: (jestConfig) => {
+      jestConfig.transform = {
+        "\\.css\\.ts$": "@vanilla-extract/jest-transform",
+        ...jestConfig.transform,
+      };
+      return jestConfig;
     },
   },
 };
