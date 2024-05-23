@@ -72,6 +72,7 @@
   "devDependencies": {
     "@craco/craco": "^7.1.0",
     "@types/react-modal": "^3.16.3",
+    "@vanilla-extract/jest-transform": "^1.1.5",
     "@vanilla-extract/webpack-plugin": "^2.3.9",
     "eslint-plugin-import": "^2.29.1"
   }
