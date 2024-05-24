@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Action, Dispatch } from "redux";
 import { UserProfile, setUserProfile } from "../../reducers/user-reducer";
 import { ModalProps } from "../types/ModalProps";
-import "./../../App.css";
+import "../../App.css";
 import { allowSubmit } from "./common/Helpers";
 import { actions, getInitialState, reducer } from "./common/UserReducer";
 

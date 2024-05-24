@@ -1,7 +1,7 @@
 import React, { FC, useReducer } from "react";
 import ReactModal from "react-modal";
 import { ModalProps } from "../types/ModalProps";
-import "./../../App.css";
+import "../../App.css";
 import "./Registration.css";
 import { allowSubmit } from "./common/Helpers";
 import { PasswordForm } from "./common/PasswordForm";

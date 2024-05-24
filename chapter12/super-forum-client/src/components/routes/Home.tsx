@@ -9,7 +9,7 @@ import * as css from "./Home_vanilla.css";
 
 export const Home: FC = () => {
   return (
-    <div className={`screen-root-container ${css.homeContainer}`}>
+    <div className={css.homeContainer}>
       <div className={css.navigation}>
         <Nav />
       </div>
