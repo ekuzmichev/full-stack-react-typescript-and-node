@@ -5,11 +5,12 @@ import { Nav } from "../areas/nav/Nav";
 import { RightMenu } from "../areas/right-menu/RightMenu";
 import { Sidebar } from "../areas/sidebar/Sidebar";
 import "./Home.css";
+import * as css from "./Home_vanilla.css";
 
 export const Home: FC = () => {
   return (
-    <div className="screen-root-container home-container">
-      <div className="navigation">
+    <div className={`screen-root-container ${css.homeContainer}`}>
+      <div className={css.navigation}>
         <Nav />
       </div>
       <Sidebar />
