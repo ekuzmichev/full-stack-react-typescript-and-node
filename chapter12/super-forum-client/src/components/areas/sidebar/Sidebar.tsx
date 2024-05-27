@@ -1,6 +1,7 @@
 import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { SidebarMenus } from "./SidebarMenus";
+import * as css from "./Sidebar.css";
 
 export const Sidebar = () => {
   const { width } = useWindowDimensions();
@@ -10,7 +11,7 @@ export const Sidebar = () => {
   }
 
   return (
-    <div className="sidebar">
+    <div className={css.sidebar}>
       <SidebarMenus />
     </div>
   );

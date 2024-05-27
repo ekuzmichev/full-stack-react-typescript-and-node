@@ -1,6 +1,6 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Category } from "../../../models/Category";
-import "./MainHeader.css";
+import * as css from "./MainHeader.css";
 
 interface MainHeaderProps {
   category?: Category;
@@ -8,9 +8,9 @@ interface MainHeaderProps {
 
 export const MainHeader: FC<MainHeaderProps> = ({ category }) => {
   return (
-    <div className="main-header">
+    <div className={css.mainHeader}>
       <div
-        className="title-bar"
+        className={css.titleBar}
         style={{ marginBottom: ".25em", paddingBottom: "0" }}
       >
         <strong>{category?.name || "Placeholder"}</strong>

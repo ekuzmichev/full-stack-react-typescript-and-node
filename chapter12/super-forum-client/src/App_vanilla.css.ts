@@ -1,7 +1,7 @@
 import { createVar, style } from "@vanilla-extract/css";
 
-var borderColor = createVar();
-var border = createVar();
+const borderColor = createVar();
+const border = createVar();
 
 export const screenRootContainer: string = style({
   vars: {

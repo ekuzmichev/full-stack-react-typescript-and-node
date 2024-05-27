@@ -1,15 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { screenRootContainer } from "../../App_vanilla.css";
-
-const GridArea = {
-  Nav: "nav",
-  Sidebar: "sidebar",
-  LeftMenu: "left-menu",
-  Content: "content",
-  RightMenu: "right-menu",
-} as const;
-
-type GridArea = (typeof GridArea)[keyof typeof GridArea];
+import { GridArea } from "../types/GridArea";
 
 export const homeContainer: string = style([
   screenRootContainer,
@@ -24,9 +15,15 @@ export const homeContainer: string = style([
     "${GridArea.Sidebar} ${GridArea.LeftMenu} ${GridArea.Content} ${GridArea.RightMenu}"
   `,
     gap: "0.75rem 0.4rem",
+    "@media": {
+      "screen and (orientation: portrait) and (max-width: 768px)": {
+        gridTemplateColumns: "1fr",
+        gridTemplateAreas: `
+        "${GridArea.Nav}"
+        "${GridArea.Content}"
+      `,
+      },
+    },
   },
 ]);
 
-export const navigation: string = style({
-  gridArea: GridArea.Nav,
-});

@@ -1,10 +1,11 @@
-import { ReactNode, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Category } from "../../../models/Category";
-import { getThreadsByCategory } from "../../../services/DataService";
-import { ThreadCard } from "./ThreadCard";
-import { MainHeader } from "./MainHeader";
 import { Thread } from "../../../models/Thread";
+import { getThreadsByCategory } from "../../../services/DataService";
+import * as css from "./Main.css";
+import { MainHeader } from "./MainHeader";
+import { ThreadCard } from "./ThreadCard";
 
 export const Main = () => {
   const { categoryId } = useParams();
@@ -28,7 +29,7 @@ export const Main = () => {
   }, [categoryId]);
 
   return (
-    <main className="content">
+    <main className={css.content}>
       <MainHeader category={category} />
       <div>{threadCards}</div>
     </main>

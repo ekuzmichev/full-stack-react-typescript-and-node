@@ -1,11 +1,11 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import ReactModal from "react-modal";
 import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
-import "./Nav.css";
-import ReactModal from "react-modal";
 import { SidebarMenus } from "../sidebar/SidebarMenus";
+import * as css from "./Nav.css";
 
 export const Nav = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -29,7 +29,7 @@ export const Nav = () => {
           icon={faBars}
           onClick={onMenuIconClick}
           size="lg"
-          className="nav-mobile-menu"
+          className={css.navMobileMenu}
         />
       );
     }
@@ -37,7 +37,7 @@ export const Nav = () => {
   };
 
   return (
-    <>
+    <div className={css.navigation}>
       <ReactModal
         className="modal-menu"
         isOpen={menuVisible}
@@ -47,10 +47,10 @@ export const Nav = () => {
       >
         <SidebarMenus />
       </ReactModal>
-      <nav>
+      <div className={css.nav}>
         {getMobileMenu()}
         <strong>SuperForum</strong>
-      </nav>
-    </>
+      </div>
+    </div>
   );
 };

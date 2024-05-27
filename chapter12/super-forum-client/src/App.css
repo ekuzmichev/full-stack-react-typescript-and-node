@@ -105,12 +105,6 @@ input[type="submit"]:hover {
   padding-top: 0.8em;
 }
 
-.title-bar {
-  margin-bottom: 0.4em;
-  padding-bottom: 0.25em !important;
-  border-bottom: 3px solid var(--input-border-color);
-}
-
 .panel {
   display: flex;
   flex-direction: row;
