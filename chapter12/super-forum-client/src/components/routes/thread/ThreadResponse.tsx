@@ -1,6 +1,7 @@
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FC } from "react";
+import { PointsIcon } from "../../common/PointsIcon";
 import { RichEditor } from "../../editor/RichEditor";
-import { ThreadPointsInline } from "../../points/ThreadPointsInline";
 import { UserNameAndTime } from "./UserNameAndTime";
 
 interface ThreadResponseProps {
@@ -21,7 +22,10 @@ export const ThreadResponse: FC<ThreadResponseProps> = ({
       <div>
         <UserNameAndTime userName={userName} lastModifiedOn={lastModifiedOn} />
         <span style={{ marginLeft: "1em" }}>
-          <ThreadPointsInline points={points || 0} />
+          <label>
+            {points || 0}
+            <PointsIcon icon={faHeart} />
+          </label>
         </span>
       </div>
       <div className="thread-body-editor">

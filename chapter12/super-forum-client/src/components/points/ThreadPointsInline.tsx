@@ -1,6 +1,6 @@
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC } from "react";
+import { PointsIcon } from "../common/PointsIcon";
 import { ThreadPointsBarProps } from "./ThreadPointsBar";
 
 export const ThreadPointsInline: FC<ThreadPointsBarProps> = ({
@@ -16,13 +16,7 @@ export const ThreadPointsInline: FC<ThreadPointsBarProps> = ({
         }}
       >
         {points || 0}
-        <FontAwesomeIcon
-          icon={faHeart}
-          className="points-icon"
-          style={{
-            marginLeft: ".2em",
-          }}
-        />
+        <PointsIcon icon={faHeart} />
       </label>
     </React.Fragment>
   );

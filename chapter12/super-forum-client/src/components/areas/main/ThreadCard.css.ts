@@ -21,6 +21,11 @@ export const textContainer = style({
   width: "90%",
   padding: "0.75em 1em 0.75em 1.2em",
   borderRight: `solid 1px ${theme.vars.borderColor}`,
+  "@media": {
+    "screen and (orientation: portrait) and (max-width: 768px)": {
+      borderRight: "none",
+    },
+  },
 });
 
 export const body = style({
@@ -35,8 +40,13 @@ export const footer = style({
   fontWeight: "bold",
   wordWrap: "break-word",
   overflow: "auto",
-  lineHeight: "10px",
   marginTop: "0.5em",
+});
+
+export const points = style({
+  display: "flex",
+  flexDirection: "row",
+  gap: "0.5em",
 });
 
 export const usernameHeader = style({
@@ -57,9 +67,4 @@ export const title = style({
 
 export const views = style({
   marginRight: ".5em",
-});
-
-export const iconLg = style({
-  marginLeft: "0.5em",
-  width: "2.23em",
 });

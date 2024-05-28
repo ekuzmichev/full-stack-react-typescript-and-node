@@ -1,12 +1,10 @@
-import { faEye, faReplyAll } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faHeart, faReplyAll } from "@fortawesome/free-solid-svg-icons";
 import { FC } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Thread } from "../../../models/Thread";
 import { PointsIcon } from "../../common/PointsIcon";
 import { ThreadPointsBar } from "../../points/ThreadPointsBar";
-import { ThreadPointsInline } from "../../points/ThreadPointsInline";
 import * as css from "./ThreadCard.css";
 
 interface ThreadCardProps {
@@ -47,23 +45,28 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
             <div>{thread.body}</div>
           </div>
           <div className={css.footer}>
-            <span className={css.views}>
-              <label>
-                {thread.views}
-                <FontAwesomeIcon icon={faEye} className={css.iconLg} />
-              </label>
-            </span>
-            <span>
-              {isMobile ? (
-                <ThreadPointsInline points={thread?.points || 0} />
-              ) : null}
-              {isMobile && (
-                <label className={css.responsesLabel}>
-                  {thread?.threadItems?.length ?? null}
-                  <PointsIcon icon={faReplyAll} />
+            <div className={css.points}>
+              <span>
+                <label>
+                  {thread.views}
+                  <PointsIcon icon={faEye} />
                 </label>
+              </span>
+              {isMobile && (
+                <>
+                  <span>
+                    <label>
+                      {thread?.points || 0}
+                      <PointsIcon icon={faHeart} />
+                    </label>
+                  </span>
+                  <label className={css.responsesLabel}>
+                    {thread?.threadItems?.length ?? null}
+                    <PointsIcon icon={faReplyAll} />
+                  </label>
+                </>
               )}
-            </span>
+            </div>
           </div>
         </div>
       </div>
