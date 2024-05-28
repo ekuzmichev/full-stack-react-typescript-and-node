@@ -6,6 +6,7 @@ export const container = style({
   marginBottom: "0.75em",
   backgroundColor: "mintcream",
   border: `solid 1px ${theme.vars.borderColor}`,
+  borderRadius: "0.3em 0.3em 0 0",
 });
 
 export const titleBar = style({

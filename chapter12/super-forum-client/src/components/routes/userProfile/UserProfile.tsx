@@ -6,7 +6,7 @@ import { ThreadItem } from "../../../models/ThreadItem";
 import { UserState } from "../../../reducers/user-reducer";
 import { getUserThreads } from "../../../services/DataService";
 import { AppState } from "../../../store";
-import { Nav } from "../../areas/nav/Nav";
+import { NavigationBar } from "../../areas/navigation-bar/NavigationBar";
 import { PasswordForm } from "../../auth/common/PasswordForm";
 import { actions, reducer as userReducer } from "../../auth/common/UserReducer";
 import * as css from "./UserProfile.css";
@@ -76,7 +76,7 @@ export const UserProfile = () => {
   return (
     <div className="screen-root-container">
       <div className="thread-nav-container">
-        <Nav />
+        <NavigationBar />
       </div>
       <form className={css.contentContainer}>
         <div>

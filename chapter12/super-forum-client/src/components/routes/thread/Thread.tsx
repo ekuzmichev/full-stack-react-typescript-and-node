@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Thread as ThreadModel } from "../../../models/Thread";
 import { getThreadById } from "../../../services/DataService";
-import { Nav } from "../../areas/nav/Nav";
+import { NavigationBar } from "../../areas/navigation-bar/NavigationBar";
 import { ThreadPointsBar } from "../../points/ThreadPointsBar";
 import "./Thread.css";
 import { ThreadBody } from "./ThreadBody";
@@ -28,7 +28,7 @@ export const Thread = () => {
   return (
     <div className="screen-root-container">
       <div className="thread-nav-container">
-        <Nav />
+        <NavigationBar />
       </div>
       <div className="thread-content-container">
         <div className="thread-content-post-container">

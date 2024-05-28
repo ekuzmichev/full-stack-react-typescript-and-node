@@ -1,6 +1,6 @@
 export const GridArea = {
-  Nav: "nav",
-  Sidebar: "sidebar",
+  NavigationBar: "navigation-bar",
+  SideBar: "side-bar",
   LeftMenu: "left-menu",
   Content: "content",
   RightMenu: "right-menu",

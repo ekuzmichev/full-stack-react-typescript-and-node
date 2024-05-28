@@ -12,9 +12,9 @@ import { AppState, useAppSelector } from "../../../store";
 import { Login } from "../../auth/Login";
 import { Logout } from "../../auth/Logout";
 import { Registration } from "../../auth/Registration";
-import * as css from "./SidebarMenus.css";
+import * as css from "./SideBarMenus.css";
 
-export const SidebarMenus = () => {
+export const SideBarMenus = () => {
   const navigate = useNavigate();
 
   const [registrationFormOpen, setRegistrationFormOpen] = useState(false);

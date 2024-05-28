@@ -1,8 +1,8 @@
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
-import * as css from "./Sidebar.css";
-import { SidebarMenus } from "./SidebarMenus";
+import * as css from "./SideBar.css";
+import { SideBarMenus } from "./SideBarMenus";
 
-export const Sidebar = () => {
+export const SideBar = () => {
   const { isMobile } = useWindowDimensions();
 
   if (isMobile) {
@@ -11,7 +11,7 @@ export const Sidebar = () => {
 
   return (
     <div className={css.container}>
-      <SidebarMenus />
+      <SideBarMenus />
     </div>
   );
 };

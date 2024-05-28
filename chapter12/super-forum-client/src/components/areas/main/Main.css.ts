@@ -6,4 +6,5 @@ export const container = style({
   minHeight: theme.vars.minScreenHeight,
   gridArea: GridArea.Content,
   backgroundColor: "blanchedalmond",
+  borderRadius: "0.3em",
 });

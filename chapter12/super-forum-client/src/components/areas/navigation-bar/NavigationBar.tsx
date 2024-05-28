@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Modal } from "../../common/Modal";
-import { SidebarMenus } from "../sidebar/SidebarMenus";
-import * as css from "./Nav.css";
+import { SideBarMenus } from "../side-bar/SideBarMenus";
+import * as css from "./NavigationBar.css";
 
-export const Nav = () => {
+export const NavigationBar = () => {
   const [menuVisible, setMenuVisible] = useState(false);
 
   const { isMobile } = useWindowDimensions();
@@ -29,7 +29,7 @@ export const Nav = () => {
         shouldCloseOnOverlayClick={true}
         ariaHideApp={false}
       >
-        <SidebarMenus />
+        <SideBarMenus />
       </Modal>
       <div className={css.content}>
         {isMobile && (

@@ -2,15 +2,13 @@ import { style } from "@vanilla-extract/css";
 import { GridArea } from "../../types/GridArea";
 
 export const container: string = style({
-  gridArea: GridArea.Nav,
+  gridArea: GridArea.NavigationBar,
+  backgroundColor: "aqua",
+  borderRadius: "0.3em",
 });
 
 export const content = style({
-  backgroundColor: "aqua",
-  paddingTop: "0.75em",
-  paddingBottom: "0.75em",
-  paddingLeft: "1em",
-  paddingRight: "1em",
+  padding: "0.75em 1em",
 });
 
 export const menuIcon = style({
