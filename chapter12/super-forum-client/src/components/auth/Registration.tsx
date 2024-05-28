@@ -1,8 +1,9 @@
 import React, { FC, useReducer } from "react";
 import "../../App.css";
+import { FormButtons } from "../common/FormButtons";
 import { Modal } from "../common/Modal";
 import { ModalProps } from "../types/ModalProps";
-import "./Registration.css";
+import * as css from "./Registration.css";
 import { allowSubmit } from "./common/Helpers";
 import { PasswordForm } from "./common/PasswordForm";
 import { actions, getInitialState, reducer } from "./common/UserReducer";
@@ -53,7 +54,7 @@ export const Registration: FC<ModalProps> = ({
       ariaHideApp={false}
     >
       <form>
-        <div className="reg-inputs">
+        <div className={css.inputs}>
           <div>
             <label>username</label>
             <input type="text" value={username} onChange={onUsernameChange} />
@@ -64,28 +65,14 @@ export const Registration: FC<ModalProps> = ({
             dispatch={dispatch}
           />
         </div>
-        <div className="form-buttons">
-          <div className="form-btn-left">
-            <button
-              style={{ marginLeft: ".5em" }}
-              className="action-btn"
-              disabled={!isSubmitEnabled}
-              onClick={onRegisterBtnClick}
-            >
-              Register
-            </button>
-            <button
-              style={{ marginLeft: ".5em" }}
-              className="cancel-btn"
-              onClick={onCancelBtnClick}
-            >
-              Close
-            </button>
-          </div>
-          <span className="form-btn-right">
-            <strong>{resultMessage}</strong>
-          </span>
-        </div>
+        <FormButtons
+          actionBtnText="Register"
+          cancelBtnText="Close"
+          message={resultMessage}
+          actionBtnDisabled={!isSubmitEnabled}
+          onActionBtnClick={onRegisterBtnClick}
+          onCancelBtnClick={onCancelBtnClick}
+        />
       </form>
     </Modal>
   );

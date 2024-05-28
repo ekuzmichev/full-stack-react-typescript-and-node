@@ -1,13 +1,13 @@
 import React, { FC, useEffect, useReducer } from "react";
-import ReactModal from "react-modal";
 import { useDispatch } from "react-redux";
 import { Action, Dispatch } from "redux";
-import { UserProfile, setUserProfile } from "../../reducers/user-reducer";
-import { ModalProps } from "../types/ModalProps";
 import "../../App.css";
+import { UserProfile, setUserProfile } from "../../reducers/user-reducer";
+import { FormButtons } from "../common/FormButtons";
+import { Modal } from "../common/Modal";
+import { ModalProps } from "../types/ModalProps";
 import { allowSubmit } from "./common/Helpers";
 import { actions, getInitialState, reducer } from "./common/UserReducer";
-import { Modal } from "../common/Modal";
 
 export const Login: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
   const reduxDispatch: Dispatch<Action> = useDispatch();
@@ -80,28 +80,14 @@ export const Login: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
             />
           </div>
         </div>
-        <div className="form-buttons form-buttons-sm">
-          <div className="form-btn-left">
-            <button
-              style={{ marginLeft: ".5em" }}
-              className="action-btn"
-              disabled={!isSubmitEnabled}
-              onClick={onLoginBtnClick}
-            >
-              Login
-            </button>
-            <button
-              style={{ marginLeft: ".5em" }}
-              className="cancel-btn"
-              onClick={onCancelBtnClick}
-            >
-              Close
-            </button>
-          </div>
-          <span className="form-btn-right">
-            <strong>{resultMessage}</strong>
-          </span>
-        </div>
+        <FormButtons
+          actionBtnText="Login"
+          cancelBtnText="Close"
+          message={resultMessage}
+          actionBtnDisabled={!isSubmitEnabled}
+          onActionBtnClick={onLoginBtnClick}
+          onCancelBtnClick={onCancelBtnClick}
+        />
       </form>
     </Modal>
   );

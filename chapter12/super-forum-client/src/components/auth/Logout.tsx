@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { FormButtons } from "../common/FormButtons";
 import { Modal } from "../common/Modal";
 import { ModalProps } from "../types/ModalProps";
 import * as css from "./Logout.css";
@@ -25,24 +26,12 @@ export const Logout: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
     >
       <form>
         <div className={css.logoutInputs}>Are you sure you want to logout?</div>
-        <div className="form-buttons form-buttons-sm">
-          <div className="form-btn-left">
-            <button
-              style={{ marginLeft: ".5em" }}
-              className="action-btn"
-              onClick={onLogoutBtnClick}
-            >
-              Login
-            </button>
-            <button
-              style={{ marginLeft: ".5em" }}
-              className="cancel-btn"
-              onClick={onCancelBtnClick}
-            >
-              Close
-            </button>
-          </div>
-        </div>
+        <FormButtons
+          actionBtnText="Logout"
+          cancelBtnText="Close"
+          onActionBtnClick={onLogoutBtnClick}
+          onCancelBtnClick={onCancelBtnClick}
+        />
       </form>
     </Modal>
   );
