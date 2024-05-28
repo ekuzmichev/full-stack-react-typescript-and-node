@@ -1,13 +1,16 @@
 import React, { FC, useReducer } from "react";
-import ReactModal from "react-modal";
-import { ModalProps } from "../types/ModalProps";
 import "../../App.css";
+import { Modal } from "../common/Modal";
+import { ModalProps } from "../types/ModalProps";
 import "./Registration.css";
 import { allowSubmit } from "./common/Helpers";
 import { PasswordForm } from "./common/PasswordForm";
 import { actions, getInitialState, reducer } from "./common/UserReducer";
 
-export const Registration: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
+export const Registration: FC<ModalProps> = ({
+  isOpen,
+  onVisibilityToggle,
+}) => {
   const [
     {
       username,
@@ -43,8 +46,7 @@ export const Registration: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => 
   };
 
   return (
-    <ReactModal
-      className="modal-menu"
+    <Modal
       isOpen={isOpen}
       onRequestClose={onVisibilityToggle}
       shouldCloseOnOverlayClick={true}
@@ -85,6 +87,6 @@ export const Registration: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => 
           </span>
         </div>
       </form>
-    </ReactModal>
+    </Modal>
   );
 };

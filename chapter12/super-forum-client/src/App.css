@@ -24,19 +24,6 @@
   border-radius: 0.3em;
 }
 
-.modal-menu {
-  position: fixed;
-  min-width: 550px;
-  left: 50%;
-  top: 4.5em;
-  transform: translate(-50%);
-  border: var(--border);
-  border-radius: 5px;
-  background-color: white;
-  padding: 1em 1em 1em 1em;
-  z-index: 1000;
-}
-
 input[type="text"],
 input[type="password"],
 select {
@@ -117,15 +104,6 @@ input[type="submit"]:hover {
   text-overflow: ellipsis;
 }
 
-.icon-lg {
-  margin-left: 0.5em;
-  width: 2.23em;
-}
-
-.points-icon {
-  margin-top: 0.5em;
-}
-
 .clickable-span {
   cursor: pointer;
 }
@@ -168,13 +146,5 @@ hr {
     grid-template-areas:
       "nav"
       "content";
-  }
-
-  .modal-menu {
-    min-width: 60px;
-    left: 0.5em;
-    right: 0.5em;
-    top: 3.5em;
-    transform: translate(0%);
   }
 }

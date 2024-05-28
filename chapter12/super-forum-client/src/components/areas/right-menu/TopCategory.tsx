@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { CategoryThread } from "../../../models/CategoryThread";
-import "./TopCategory.css";
+import * as css from "./TopCategory.css";
 
 interface TopCategoryProps {
   topCategories: CategoryThread[];
@@ -13,16 +13,16 @@ export const TopCategory: FC<TopCategoryProps> = ({ topCategories }) => {
     if (topCategories && topCategories.length > 0) {
       const newThreadElements = topCategories.map((top) => (
         <li key={top.threadId}>
-          <span className="clickable-span">{top.title}</span>
+          <span className={css.clickableSpan}>{top.title}</span>
         </li>
       ));
 
-      setThreads(<ul className="topcat-threads">{newThreadElements}</ul>);
+      setThreads(<ul className={css.threads}>{newThreadElements}</ul>);
     }
   }, [topCategories]);
 
   return (
-    <div className="topcat-item-container">
+    <div className={css.itemContainer}>
       <div>
         <strong>{topCategories[0].category}</strong>
       </div>

@@ -6,6 +6,7 @@ import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { SidebarMenus } from "../sidebar/SidebarMenus";
 import * as css from "./Nav.css";
+import { Modal } from "../../common/Modal";
 
 export const Nav = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -38,15 +39,14 @@ export const Nav = () => {
 
   return (
     <div className={css.navigation}>
-      <ReactModal
-        className="modal-menu"
+      <Modal
         isOpen={menuVisible}
         onRequestClose={onMenuModalRequestClose}
         shouldCloseOnOverlayClick={true}
         ariaHideApp={false}
       >
         <SidebarMenus />
-      </ReactModal>
+      </Modal>
       <div className={css.nav}>
         {getMobileMenu()}
         <strong>SuperForum</strong>

@@ -7,6 +7,7 @@ import { ModalProps } from "../types/ModalProps";
 import "../../App.css";
 import { allowSubmit } from "./common/Helpers";
 import { actions, getInitialState, reducer } from "./common/UserReducer";
+import { Modal } from "../common/Modal";
 
 export const Login: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
   const reduxDispatch: Dispatch<Action> = useDispatch();
@@ -57,8 +58,7 @@ export const Login: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
   };
 
   return (
-    <ReactModal
-      className="modal-menu"
+    <Modal
       isOpen={isOpen}
       onRequestClose={onVisibilityToggle}
       shouldCloseOnOverlayClick={true}
@@ -103,6 +103,6 @@ export const Login: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
           </span>
         </div>
       </form>
-    </ReactModal>
+    </Modal>
   );
 };

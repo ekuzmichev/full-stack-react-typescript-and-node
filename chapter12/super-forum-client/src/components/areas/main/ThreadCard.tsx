@@ -7,7 +7,7 @@ import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Thread } from "../../../models/Thread";
 import { ThreadPointsBar } from "../../points/ThreadPointsBar";
 import { ThreadPointsInline } from "../../points/ThreadPointsInline";
-import "./ThreadCard.css";
+import * as css from "./ThreadCard.css";
 
 interface ThreadCardProps {
   thread: Thread;
@@ -27,13 +27,9 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
   const getResponses = (thread: Thread): React.ReactNode => {
     if (isMobile) {
       return (
-        <label style={{ marginRight: ".5em" }}>
+        <label className={css.responsesLabel}>
           {thread?.threadItems?.length ?? null}
-          <FontAwesomeIcon
-            icon={faReplyAll}
-            className="points-icon"
-            style={{ marginLeft: ".25em", marginTop: "-.25em" }}
-          />
+          <FontAwesomeIcon icon={faReplyAll} className={css.pointsIcon} />
         </label>
       );
     }
@@ -41,39 +37,34 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
   };
 
   return (
-    <section className="panel threadcard-container">
-      <div className="threadcard-txt-container">
-        <div className="content-header">
-          <Link
-            to={`/categotyThreads/${thread.category.id}`}
-            className="link-txt"
-          >
+    <section className={css.container}>
+      <div className={css.textContainer}>
+        <div>
+          <Link to={`/categotyThreads/${thread.category.id}`}>
             <strong>{thread.category.name}</strong>
           </Link>
-          <span className="username-header" style={{ marginLeft: ".5em" }}>
-            {thread.userName}
-          </span>
+          <span className={css.usernameHeader}>{thread.userName}</span>
         </div>
-        <div className="quesiton">
+        <div className={css.question}>
           <div
             onClick={onShowThreadClick}
             data-thread-id={thread.id}
-            style={{ marginBottom: ".4em" }}
+            className={css.title}
           >
             <strong>{thread.title}</strong>
           </div>
           <div
-            className="threadcard-body"
+            className={css.body}
             data-thread-id={thread.id}
             onClick={onShowThreadClick}
           >
             <div>{thread.body}</div>
           </div>
-          <div className="threadcard-footer">
-            <span style={{ marginRight: ".5em" }}>
+          <div className={css.footer}>
+            <span className={css.views}>
               <label>
                 {thread.views}
-                <FontAwesomeIcon icon={faEye} className="icon-lg" />
+                <FontAwesomeIcon icon={faEye} className={css.iconLg} />
               </label>
             </span>
             <span>

@@ -1,7 +1,7 @@
 import React, { FC } from "react";
-import ReactModal from "react-modal";
+import { Modal } from "../common/Modal";
 import { ModalProps } from "../types/ModalProps";
-import "./Logout.css";
+import * as css from "./Logout.css";
 
 export const Logout: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
   const onLogoutBtnClick = (
@@ -18,14 +18,13 @@ export const Logout: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
   };
 
   return (
-    <ReactModal
-      className="modal-menu"
+    <Modal
       isOpen={isOpen}
       onRequestClose={onVisibilityToggle}
       shouldCloseOnOverlayClick={true}
     >
       <form>
-        <div className="logout-inputs">Are you sure you want to logout?</div>
+        <div className={css.logoutInputs}>Are you sure you want to logout?</div>
         <div className="form-buttons form-buttons-sm">
           <div className="form-btn-left">
             <button
@@ -45,6 +44,6 @@ export const Logout: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
           </div>
         </div>
       </form>
-    </ReactModal>
+    </Modal>
   );
 };
