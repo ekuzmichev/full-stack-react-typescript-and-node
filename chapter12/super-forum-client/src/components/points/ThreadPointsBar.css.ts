@@ -6,7 +6,7 @@ export const points = style({
   flexDirection: "column",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: "0.5em",
+  padding: "1.1em 0.5em",
 });
 
 export const pointsItem = style({
