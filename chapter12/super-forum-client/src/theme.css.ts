@@ -9,6 +9,7 @@ export const vars = createGlobalTheme("#root", {
   proceedColor: "rgb(81, 142, 132)",
   pointColor: "rgb(54, 69, 79)",
   panelBorderThickness: "0.05em",
+  panelColor: "ghostwhite",
 });
 
 globalStyle("body", {
@@ -30,4 +31,9 @@ globalStyle("ul", {
 
 globalStyle("li", {
   marginBottom: "1em",
+});
+
+globalStyle("hr", {
+  width: "100%",
+  border: "solid 2px rgba(115, 136, 181, 0.35)",
 });

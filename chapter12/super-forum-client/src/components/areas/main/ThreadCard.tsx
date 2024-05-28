@@ -17,20 +17,8 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
 
   const { isMobile } = useWindowDimensions();
 
-  const onShowThreadClick = (e: React.MouseEvent<HTMLDivElement>): void => {
+  const onShowThreadClick = (): void => {
     navigate(`/thread/${thread.id}`);
-  };
-
-  const getResponses = (thread: Thread): React.ReactNode => {
-    if (isMobile) {
-      return (
-        <label className={css.responsesLabel}>
-          {thread?.threadItems?.length ?? null}
-          <FontAwesomeIcon icon={faReplyAll} className={css.pointsIcon} />
-        </label>
-      );
-    }
-    return null;
   };
 
   return (
@@ -68,7 +56,15 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
               {isMobile ? (
                 <ThreadPointsInline points={thread?.points || 0} />
               ) : null}
-              {getResponses(thread)}
+              {isMobile && (
+                <label className={css.responsesLabel}>
+                  {thread?.threadItems?.length ?? null}
+                  <FontAwesomeIcon
+                    icon={faReplyAll}
+                    className={css.pointsIcon}
+                  />
+                </label>
+              )}
             </span>
           </div>
         </div>

@@ -34,7 +34,7 @@ export const Main = () => {
   return (
     <main className={css.container}>
       <MainHeader category={category} />
-      <div>{threadCardJsxElements}</div>
+      <div className={css.threadCards}>{threadCardJsxElements}</div>
     </main>
   );
 };
