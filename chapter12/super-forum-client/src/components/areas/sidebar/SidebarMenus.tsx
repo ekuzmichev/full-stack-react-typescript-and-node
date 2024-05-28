@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserProfile } from "../../../reducers/user-reducer";
 import { AppState, useAppSelector } from "../../../store";
 import { Login } from "../../auth/Login";
@@ -15,6 +15,8 @@ import { Registration } from "../../auth/Registration";
 import * as css from "./SidebarMenus.css";
 
 export const SidebarMenus = () => {
+  const navigate = useNavigate();
+
   const [registrationFormOpen, setRegistrationFormOpen] = useState(false);
   const [loginFormOpen, setLoginFormOpen] = useState(false);
   const [logoutFormOpen, setLogoutFormOpen] = useState(false);
@@ -23,6 +25,9 @@ export const SidebarMenus = () => {
     (state: AppState) => state.user.userProfile
   );
 
+  const onUserNameListItemClick = () => {
+    navigate(`/userProfile/${user?.id}`);
+  };
   const onRegistrationFormVisibilityToggle = () => {
     setRegistrationFormOpen(!registrationFormOpen);
   };
@@ -38,40 +43,38 @@ export const SidebarMenus = () => {
   return (
     <>
       <ul>
-        <li>
+        <li className={css.clickableListItem} onClick={onUserNameListItemClick}>
           <FontAwesomeIcon icon={faUser} />
-          <span className={css.menuItemText}>
-            <Link to={`/userProfile/${user?.id}`}>{user?.userName}</Link>
-          </span>
+          <span className={css.menuItemText}>{user?.userName}</span>
         </li>
-        <li>
+        <li
+          className={css.clickableListItem}
+          onClick={onRegistrationFormVisibilityToggle}
+        >
           <FontAwesomeIcon icon={faRegistered} />
-          <span
-            onClick={onRegistrationFormVisibilityToggle}
-            className={css.menuItemText}
-          >
-            register
-          </span>
+          <span className={css.menuItemText}>register</span>
           <Registration
             isOpen={registrationFormOpen}
             onVisibilityToggle={onRegistrationFormVisibilityToggle}
           />
         </li>
-        <li>
+        <li
+          className={css.clickableListItem}
+          onClick={onLoginFormVisibilityToggle}
+        >
           <FontAwesomeIcon icon={faSignInAlt} />
-          <span onClick={onLoginFormVisibilityToggle} className={css.menuItemText}>
-            login
-          </span>
+          <span className={css.menuItemText}>login</span>
           <Login
             isOpen={loginFormOpen}
             onVisibilityToggle={onLoginFormVisibilityToggle}
           />
         </li>
-        <li>
+        <li
+          className={css.clickableListItem}
+          onClick={onLogoutFormVisibilityToggle}
+        >
           <FontAwesomeIcon icon={faSignOutAlt} />
-          <span onClick={onLogoutFormVisibilityToggle} className={css.menuItemText}>
-            logout
-          </span>
+          <span className={css.menuItemText}>logout</span>
           <Logout
             isOpen={logoutFormOpen}
             onVisibilityToggle={onLogoutFormVisibilityToggle}

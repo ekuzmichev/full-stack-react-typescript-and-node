@@ -5,7 +5,7 @@ export const container: string = style({
   gridArea: GridArea.Nav,
 });
 
-export const menu = style({
+export const content = style({
   backgroundColor: "aqua",
   paddingTop: "0.75em",
   paddingBottom: "0.75em",
