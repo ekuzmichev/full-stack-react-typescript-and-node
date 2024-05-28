@@ -8,7 +8,7 @@ import * as css from "./Home.css";
 
 export const Home: FC = () => {
   return (
-    <div className={css.homeContainer}>
+    <div className={css.container}>
       <Nav />
       <Sidebar />
       <LeftMenu />

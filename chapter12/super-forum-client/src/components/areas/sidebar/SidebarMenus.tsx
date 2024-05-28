@@ -40,7 +40,7 @@ export const SidebarMenus = () => {
       <ul>
         <li>
           <FontAwesomeIcon icon={faUser} />
-          <span className={css.menuName}>
+          <span className={css.menuItemText}>
             <Link to={`/userProfile/${user?.id}`}>{user?.userName}</Link>
           </span>
         </li>
@@ -48,7 +48,7 @@ export const SidebarMenus = () => {
           <FontAwesomeIcon icon={faRegistered} />
           <span
             onClick={onRegistrationFormVisibilityToggle}
-            className={css.menuName}
+            className={css.menuItemText}
           >
             register
           </span>
@@ -59,7 +59,7 @@ export const SidebarMenus = () => {
         </li>
         <li>
           <FontAwesomeIcon icon={faSignInAlt} />
-          <span onClick={onLoginFormVisibilityToggle} className={css.menuName}>
+          <span onClick={onLoginFormVisibilityToggle} className={css.menuItemText}>
             login
           </span>
           <Login
@@ -69,7 +69,7 @@ export const SidebarMenus = () => {
         </li>
         <li>
           <FontAwesomeIcon icon={faSignOutAlt} />
-          <span onClick={onLogoutFormVisibilityToggle} className={css.menuName}>
+          <span onClick={onLogoutFormVisibilityToggle} className={css.menuItemText}>
             logout
           </span>
           <Logout

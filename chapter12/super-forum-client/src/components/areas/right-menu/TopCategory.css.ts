@@ -1,13 +1,13 @@
 import { style } from "@vanilla-extract/css";
 import * as theme from "./../../../theme.css";
 
-export const itemContainer = style({
+export const container = style({
   padding: "0.75em",
   paddingLeft: "0.5em",
   fontSize: theme.vars.smMedFontSize,
 });
 
-export const threads = style({
+export const threadContainer = style({
   paddingLeft: "0.2em",
 });
 

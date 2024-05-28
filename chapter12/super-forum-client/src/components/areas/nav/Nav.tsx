@@ -21,22 +21,8 @@ export const Nav = () => {
     setMenuVisible(false);
   };
 
-  const getMobileMenu = () => {
-    if (isMobile) {
-      return (
-        <FontAwesomeIcon
-          icon={faBars}
-          onClick={onMenuIconClick}
-          size="lg"
-          className={css.navMobileMenu}
-        />
-      );
-    }
-    return null;
-  };
-
   return (
-    <div className={css.navigation}>
+    <div className={css.container}>
       <Modal
         isOpen={menuVisible}
         onRequestClose={onMenuModalRequestClose}
@@ -46,8 +32,15 @@ export const Nav = () => {
         <SidebarMenus />
       </Modal>
       <div className={css.nav}>
-        {getMobileMenu()}
-        <strong>SuperForum</strong>
+        {isMobile && (
+          <FontAwesomeIcon
+            icon={faBars}
+            onClick={onMenuIconClick}
+            size="lg"
+            className={css.menuIcon}
+          />
+        )}
+        <strong>Super Forum</strong>
       </div>
     </div>
   );

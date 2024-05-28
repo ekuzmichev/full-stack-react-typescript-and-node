@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import { GridArea } from "../../types/GridArea";
 
-export const navigation: string = style({
+export const container: string = style({
   gridArea: GridArea.Nav,
 });
 
@@ -13,6 +13,6 @@ export const nav = style({
   paddingRight: "1em",
 });
 
-export const navMobileMenu = style({
+export const menuIcon = style({
   marginRight: "1em",
 });

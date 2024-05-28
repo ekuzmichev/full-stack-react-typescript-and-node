@@ -36,9 +36,5 @@ export const RightMenu = () => {
     return null;
   }
 
-  return (
-    <div className={`${css.rightMenu} ${css.rightMenuContainer}`}>
-      {topCategories}
-    </div>
-  );
+  return <div className={css.container}>{topCategories}</div>;
 };

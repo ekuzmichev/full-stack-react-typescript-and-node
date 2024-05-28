@@ -17,12 +17,12 @@ export const TopCategory: FC<TopCategoryProps> = ({ topCategories }) => {
         </li>
       ));
 
-      setThreads(<ul className={css.threads}>{newThreadElements}</ul>);
+      setThreads(<ul className={css.threadContainer}>{newThreadElements}</ul>);
     }
   }, [topCategories]);
 
   return (
-    <div className={css.itemContainer}>
+    <div className={css.container}>
       <div>
         <strong>{topCategories[0].category}</strong>
       </div>

@@ -10,7 +10,7 @@ export const Sidebar = () => {
   }
 
   return (
-    <div className={css.sidebar}>
+    <div className={css.container}>
       <SidebarMenus />
     </div>
   );
