@@ -31,7 +31,7 @@ export const Nav = () => {
       >
         <SidebarMenus />
       </Modal>
-      <div className={css.nav}>
+      <div className={css.menu}>
         {isMobile && (
           <FontAwesomeIcon
             icon={faBars}

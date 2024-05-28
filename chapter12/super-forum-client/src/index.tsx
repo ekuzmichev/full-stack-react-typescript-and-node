@@ -7,7 +7,6 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 import "./index.css";
 import { reportWebVitals } from "./reportWebVitals";
 import { store } from "./store";
-import * as theme from "./theme.css";
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
 
@@ -16,9 +15,7 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <ErrorBoundary>
-          <div className={theme.themeClass}>
-            <App />
-          </div>
+          <App />
         </ErrorBoundary>
       </BrowserRouter>
     </Provider>

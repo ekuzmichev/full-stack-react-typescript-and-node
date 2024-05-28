@@ -1,6 +1,6 @@
-import { createTheme } from "@vanilla-extract/css";
+import { createGlobalTheme } from "@vanilla-extract/css";
 
-export const [themeClass, vars] = createTheme({
+export const vars = createGlobalTheme("#root", {
   minScreenHeight: "1000px",
   borderColor: "gray",
   inputBorderColor: "#e6ebf1",

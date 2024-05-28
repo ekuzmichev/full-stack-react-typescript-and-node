@@ -3,5 +3,5 @@ import ReactModal from "react-modal";
 import * as css from "./Modal.css"
 
 export const Modal: FC<ReactModal.Props> = (props) => (
-  <ReactModal {...props} className={css.modalMenu}>{props.children}</ReactModal>
+  <ReactModal {...props} className={css.container}>{props.children}</ReactModal>
 );

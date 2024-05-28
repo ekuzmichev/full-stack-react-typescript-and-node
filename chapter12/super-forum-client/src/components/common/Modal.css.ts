@@ -1,7 +1,7 @@
 import { style } from "@vanilla-extract/css";
 import * as theme from "./../../theme.css";
 
-export const modalMenu = style({
+export const container = style({
   position: "fixed",
   minWidth: "550px",
   left: "50%",
