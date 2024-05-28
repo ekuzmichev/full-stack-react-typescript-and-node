@@ -1,7 +1,8 @@
 import { faHeart, faReplyAll } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC } from "react";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
+import { PointsIcon } from "../common/PointsIcon";
+import * as css from "./ThreadPointsBar.css";
 
 export interface ThreadPointsBarProps {
   points: number;
@@ -16,16 +17,16 @@ export const ThreadPointsBar: FC<ThreadPointsBarProps> = ({
 
   if (!isMobile) {
     return (
-      <div className="threadcard-points">
-        <div className="threadcard-points-item">
+      <div className={css.points}>
+        <div className={css.pointsItem}>
           {points}
           <br />
-          <FontAwesomeIcon icon={faHeart} className="points-icon" />
+          <PointsIcon icon={faHeart} />
         </div>
-        <div className="threadcard-points-item">
+        <div className={css.pointsItem}>
           {responseCount}
           <br />
-          <FontAwesomeIcon icon={faReplyAll} className="points-icon" />
+          <PointsIcon icon={faReplyAll} />
         </div>
       </div>
     );

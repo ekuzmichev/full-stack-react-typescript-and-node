@@ -18,17 +18,9 @@ export const container = style([
 export const textContainer = style({
   display: "flex",
   flexDirection: "column",
-  width: "92%",
+  width: "90%",
   padding: "0.75em 1em 0.75em 1.2em",
   borderRight: `solid 1px ${theme.vars.borderColor}`,
-});
-
-export const points = style({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-between",
-  alignItems: "center",
-  padding: "0.5em",
 });
 
 export const body = style({
@@ -47,23 +39,12 @@ export const footer = style({
   marginTop: "0.5em",
 });
 
-export const pointsItem = style({
-  color: theme.vars.pointColor,
-  fontSize: theme.vars.smMedFontSize,
-  textAlign: "center",
-});
-
 export const usernameHeader = style({
   marginLeft: ".5em",
 });
 
 export const question = style({
   marginBottom: ".4em",
-});
-
-export const pointsIcon = style({
-  marginLeft: ".25em",
-  marginTop: "-.25em",
 });
 
 export const responsesLabel = style({

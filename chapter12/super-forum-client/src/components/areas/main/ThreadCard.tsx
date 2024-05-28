@@ -1,9 +1,10 @@
 import { faEye, faReplyAll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { FC } from "react";
+import { FC } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Thread } from "../../../models/Thread";
+import { PointsIcon } from "../../common/PointsIcon";
 import { ThreadPointsBar } from "../../points/ThreadPointsBar";
 import { ThreadPointsInline } from "../../points/ThreadPointsInline";
 import * as css from "./ThreadCard.css";
@@ -59,10 +60,7 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
               {isMobile && (
                 <label className={css.responsesLabel}>
                   {thread?.threadItems?.length ?? null}
-                  <FontAwesomeIcon
-                    icon={faReplyAll}
-                    className={css.pointsIcon}
-                  />
+                  <PointsIcon icon={faReplyAll} />
                 </label>
               )}
             </span>
