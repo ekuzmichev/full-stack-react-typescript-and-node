@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import { Home } from "./components/routes/Home";
 import { Thread } from "./components/routes/thread/Thread";
 import { UserProfile } from "./components/routes/userProfile/UserProfile";

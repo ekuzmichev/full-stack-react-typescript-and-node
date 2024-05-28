@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useReducer } from "react";
 import { useDispatch } from "react-redux";
 import { Action, Dispatch } from "redux";
-import "../../App.css";
 import { UserProfile, setUserProfile } from "../../reducers/user-reducer";
 import { FormButtons } from "../common/FormButtons";
 import { Modal } from "../common/Modal";

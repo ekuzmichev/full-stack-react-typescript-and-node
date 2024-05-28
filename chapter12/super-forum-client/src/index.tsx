@@ -4,7 +4,6 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { App } from "./App";
 import { ErrorBoundary } from "./components/ErrorBoundary";
-import "./index.css";
 import { reportWebVitals } from "./reportWebVitals";
 import { store } from "./store";
 

@@ -1,5 +1,4 @@
 import React, { FC, useReducer } from "react";
-import "../../App.css";
 import { FormButtons } from "../common/FormButtons";
 import { Modal } from "../common/Modal";
 import { ModalProps } from "../types/ModalProps";
