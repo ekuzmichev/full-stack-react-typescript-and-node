@@ -1,20 +1,24 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { MIN_DESKTOP_WINDOW_WIDTH } from "../constants";
 
 export interface WindowDimensions {
   height: number;
   width: number;
+  isMobile: boolean;
 }
 
 export const useWindowDimensions = (): WindowDimensions => {
   const [dimensions, setDimensions] = useState<WindowDimensions>({
     height: 0,
     width: 0,
+    isMobile: true,
   });
 
   const handleResize = () => {
     setDimensions({
       height: window.innerHeight,
       width: window.innerWidth,
+      isMobile: window.innerWidth <= MIN_DESKTOP_WINDOW_WIDTH,
     });
   };
 

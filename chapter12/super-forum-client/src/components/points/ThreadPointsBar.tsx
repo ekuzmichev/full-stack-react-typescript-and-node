@@ -1,7 +1,6 @@
 import { faHeart, faReplyAll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FC } from "react";
-import { MIN_DESKTOP_WINDOW_WIDTH } from "../../constants";
 import { useWindowDimensions } from "../../hooks/useWindowDimensions";
 
 export interface ThreadPointsBarProps {
@@ -13,9 +12,7 @@ export const ThreadPointsBar: FC<ThreadPointsBarProps> = ({
   points,
   responseCount,
 }) => {
-  const { width } = useWindowDimensions();
-
-  const isMobile: boolean = width <= MIN_DESKTOP_WINDOW_WIDTH;
+  const { isMobile } = useWindowDimensions();
 
   if (!isMobile) {
     return (

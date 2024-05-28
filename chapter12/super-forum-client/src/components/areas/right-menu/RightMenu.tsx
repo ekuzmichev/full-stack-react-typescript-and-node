@@ -1,7 +1,6 @@
 import { Dictionary } from "lodash";
 import groupBy from "lodash/groupBy";
 import { useEffect, useState } from "react";
-import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { CategoryThread } from "../../../models/CategoryThread";
 import { getTopCategories } from "../../../services/DataService";
@@ -9,7 +8,8 @@ import * as css from "./RightMenu.css";
 import { TopCategory } from "./TopCategory";
 
 export const RightMenu = () => {
-  const { width } = useWindowDimensions();
+  const { isMobile } = useWindowDimensions();
+
   const [topCategories, setTopCategories] = useState<
     JSX.Element[] | undefined
   >();
@@ -32,7 +32,7 @@ export const RightMenu = () => {
     });
   }, []);
 
-  if (width <= MIN_DESKTOP_WINDOW_WIDTH) {
+  if (isMobile) {
     return null;
   }
 

@@ -8,11 +8,8 @@ interface MainHeaderProps {
 
 export const MainHeader: FC<MainHeaderProps> = ({ category }) => {
   return (
-    <div className={css.mainHeader}>
-      <div
-        className={css.titleBar}
-        style={{ marginBottom: ".25em", paddingBottom: "0" }}
-      >
+    <div className={css.container}>
+      <div className={css.titleBar}>
         <strong>{category?.name || "Placeholder"}</strong>
       </div>
     </div>

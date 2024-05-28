@@ -14,7 +14,7 @@ import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { Editor, Node, Transforms, createEditor } from "slate";
 import { withHistory } from "slate-history";
 import { Editable, Slate, useSlate, withReact } from "slate-react";
-import "./RichEditor.css";
+import * as css from "./RichEditor.css";
 import { Button, Toolbar } from "./RichTextControls";
 
 const HOTKEYS: { [keyName: string]: string } = {
@@ -71,7 +71,7 @@ export const RichEditor: FC<RichEditorProps> = ({ existingBody }) => {
         <BlockButton format="bulleted-list" icon="list_bulleted" />
       </Toolbar>
       <Editable
-        className="editor"
+        className={css.editor}
         renderElement={renderElement}
         renderLeaf={renderLeaf}
         placeholder="Enter some rich text…"

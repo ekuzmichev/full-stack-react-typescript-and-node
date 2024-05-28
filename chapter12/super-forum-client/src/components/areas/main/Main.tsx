@@ -9,29 +9,32 @@ import { ThreadCard } from "./ThreadCard";
 
 export const Main = () => {
   const { categoryId } = useParams();
+
   const [category, setCategory] = useState<Category | undefined>();
-  const [threadCards, setThreadCards] = useState<JSX.Element[] | null>(null);
+  const [threadCardJsxElements, setThreadCardJsxElements] = useState<
+    JSX.Element[] | null
+  >(null);
 
   useEffect(() => {
     console.log("Category Id:", categoryId);
 
     if (categoryId && Number(categoryId) > 0) {
       getThreadsByCategory(categoryId).then((threads: Thread[]) => {
-        const cards: JSX.Element[] = threads.map((thread: Thread) => {
+        const threadCards: JSX.Element[] = threads.map((thread: Thread) => {
           return <ThreadCard key={`thread-${thread.id}`} thread={thread} />;
         });
         if (!category) {
           setCategory(threads[0].category);
         }
-        setThreadCards(cards);
+        setThreadCardJsxElements(threadCards);
       });
     }
   }, [categoryId]);
 
   return (
-    <main className={css.content}>
+    <main className={css.container}>
       <MainHeader category={category} />
-      <div>{threadCards}</div>
+      <div>{threadCardJsxElements}</div>
     </main>
   );
 };

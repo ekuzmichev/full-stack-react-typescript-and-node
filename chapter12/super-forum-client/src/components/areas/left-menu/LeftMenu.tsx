@@ -1,31 +1,29 @@
 import { useEffect, useState } from "react";
-import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
-import { getCategories } from "../../../services/DataService";
 import { Category } from "../../../models/Category";
+import { getCategories } from "../../../services/DataService";
 import * as css from "./LeftMenu.css";
 
 export const LeftMenu = () => {
-  const { width } = useWindowDimensions();
+  const { isMobile } = useWindowDimensions();
 
-  const [categories, setCategories] = useState<JSX.Element>(
-    <div>Left Menu</div>
-  );
+  const [categoriesJsxElement, setCategoriesJsxElement] =
+    useState<JSX.Element | null>(null);
 
   useEffect(() => {
     getCategories()
       .then((categories: Category[]) => {
-        const categoryListItems: JSX.Element[] = categories.map((category) => {
-          return <li key={category.id}>{category.name}</li>;
-        });
-        setCategories(<ul className="category">{categoryListItems}</ul>);
+        const categoryListItemElements: JSX.Element[] = categories.map(
+          (category: Category) => <li key={category.id}>{category.name}</li>
+        );
+        setCategoriesJsxElement(<ul>{categoryListItemElements}</ul>);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  if (width <= MIN_DESKTOP_WINDOW_WIDTH) {
+  if (isMobile) {
     return null;
   }
 
-  return <div className={css.leftMenu}>{categories}</div>;
+  return <div className={css.container}>{categoriesJsxElement}</div>;
 };

@@ -2,7 +2,6 @@ import { faEye, faReplyAll } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FC } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
 import { Thread } from "../../../models/Thread";
 import { ThreadPointsBar } from "../../points/ThreadPointsBar";
@@ -16,9 +15,7 @@ interface ThreadCardProps {
 export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
   const navigate = useNavigate();
 
-  const { width } = useWindowDimensions();
-
-  const isMobile: boolean = width <= MIN_DESKTOP_WINDOW_WIDTH;
+  const { isMobile } = useWindowDimensions();
 
   const onShowThreadClick = (e: React.MouseEvent<HTMLDivElement>): void => {
     navigate(`/thread/${thread.id}`);
@@ -40,7 +37,7 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
     <section className={css.container}>
       <div className={css.textContainer}>
         <div>
-          <Link to={`/categotyThreads/${thread.category.id}`}>
+          <Link to={`/categoryThreads/${thread.category.id}`}>
             <strong>{thread.category.name}</strong>
           </Link>
           <span className={css.usernameHeader}>{thread.userName}</span>

@@ -9,7 +9,7 @@ import { AppState } from "../../../store";
 import { Nav } from "../../areas/nav/Nav";
 import { PasswordForm } from "../../auth/common/PasswordForm";
 import { actions, reducer as userReducer } from "../../auth/common/UserReducer";
-import "./UserProfile.css";
+import * as css from "./UserProfile.css";
 
 export const UserProfile = () => {
   const [
@@ -49,7 +49,7 @@ export const UserProfile = () => {
 
           return (
             <li key={`user-th-${thread.id}`}>
-              <Link to={`/thread/${thread.id}`} className="userprofile-link">
+              <Link to={`/thread/${thread.id}`} className={css.link}>
                 {thread.title}
               </Link>
             </li>
@@ -61,7 +61,7 @@ export const UserProfile = () => {
         const threadItemList: JSX.Element[] = threadItemsInThreadList.map(
           (ti: ThreadItem) => (
             <li key={`user-th-${ti.threadId}`}>
-              <Link to={`/thread/${ti.threadId}`} className="userprofile-link">
+              <Link to={`/thread/${ti.threadId}`} className={css.link}>
                 {ti.body}
               </Link>
             </li>
@@ -78,12 +78,12 @@ export const UserProfile = () => {
       <div className="thread-nav-container">
         <Nav />
       </div>
-      <form className="userprofile-content-container">
+      <form className={css.contentContainer}>
         <div>
           <strong>User Profile</strong>
           <label style={{ marginLeft: ".75em" }}>{username}</label>
         </div>
-        <div className="userprofile-password">
+        <div className={css.password}>
           <div>
             <PasswordForm
               dispatch={dispatch}
@@ -98,7 +98,7 @@ export const UserProfile = () => {
             <label>{resultMessage}</label>
           </div>
         </div>
-        <div className="userprofile-postings">
+        <div className={css.postings}>
           <hr className="thread-section-divider" />
           <div className="userprofile-threads">
             <strong>Threads Posted</strong>

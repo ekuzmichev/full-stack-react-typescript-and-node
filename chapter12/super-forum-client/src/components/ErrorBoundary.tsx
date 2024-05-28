@@ -1,5 +1,5 @@
 import React, { ErrorInfo } from "react";
-import "./ErrorBoundary.css";
+import * as css from "./ErrorBoundary.css";
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -32,17 +32,15 @@ export class ErrorBoundary extends React.Component<
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     const errorDetails: ErrorDetails = { error, errorInfo };
-
     console.log("errorDetails", errorDetails);
-
     this.setState({ hasError: true, errorDetails });
   }
 
   render() {
     if (this.state.hasError) {
       return (
-        <div className="error-container">
-          <h2 style={{ padding: "2em" }}>
+        <div className={css.container}>
+          <h2 className={css.header}>
             Something has gone wrong. Please reload your screen.
           </h2>
         </div>

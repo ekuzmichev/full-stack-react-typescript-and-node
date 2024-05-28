@@ -1,17 +1,15 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import ReactModal from "react-modal";
-import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
+import { Modal } from "../../common/Modal";
 import { SidebarMenus } from "../sidebar/SidebarMenus";
 import * as css from "./Nav.css";
-import { Modal } from "../../common/Modal";
 
 export const Nav = () => {
   const [menuVisible, setMenuVisible] = useState(false);
 
-  const { width } = useWindowDimensions();
+  const { isMobile } = useWindowDimensions();
 
   const onMenuIconClick = (e: React.MouseEvent<Element, MouseEvent>) => {
     setMenuVisible(!menuVisible);
@@ -24,7 +22,7 @@ export const Nav = () => {
   };
 
   const getMobileMenu = () => {
-    if (width <= MIN_DESKTOP_WINDOW_WIDTH) {
+    if (isMobile) {
       return (
         <FontAwesomeIcon
           icon={faBars}

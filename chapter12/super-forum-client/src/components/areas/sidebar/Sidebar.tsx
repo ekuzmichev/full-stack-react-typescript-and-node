@@ -1,12 +1,11 @@
-import { MIN_DESKTOP_WINDOW_WIDTH } from "../../../constants";
 import { useWindowDimensions } from "../../../hooks/useWindowDimensions";
-import { SidebarMenus } from "./SidebarMenus";
 import * as css from "./Sidebar.css";
+import { SidebarMenus } from "./SidebarMenus";
 
 export const Sidebar = () => {
-  const { width } = useWindowDimensions();
+  const { isMobile } = useWindowDimensions();
 
-  if (width <= MIN_DESKTOP_WINDOW_WIDTH) {
+  if (isMobile) {
     return null;
   }
 
