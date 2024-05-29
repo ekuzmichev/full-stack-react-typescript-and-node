@@ -1,6 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { ThreadItem } from "../../../models/ThreadItem";
 import { ThreadResponse } from "./ThreadResponse";
+import * as css from "./ThreadResponsesBuilder.css";
 
 interface ThreadResponsesBuilderProps {
   threadItems?: ThreadItem[];
@@ -34,8 +35,8 @@ export const ThreadResponsesBuilder: FC<ThreadResponsesBuilderProps> = ({
   }, [threadItems]);
 
   return (
-    <div className="thread-body-container">
-      <strong style={{ marginBottom: ".75em" }}>Responses</strong>
+    <div className={css.threadBodyContainer}>
+      <strong className={css.title}>Responses</strong>
       {responseElements}
     </div>
   );

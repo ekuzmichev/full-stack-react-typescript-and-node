@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { DateTimeUtils } from "../../../common/DateTimeUtils";
+import * as css from "./UserNameAndTime.css";
 
 interface UserNameAndTimeProps {
   userName?: string;
@@ -13,7 +14,7 @@ export const UserNameAndTime: FC<UserNameAndTimeProps> = ({
   return (
     <span>
       <strong>{userName}</strong>
-      <label style={{ marginLeft: "1em" }}>
+      <label className={css.label}>
         {lastModifiedOn
           ? DateTimeUtils.getTimePastIfLessThanDay(lastModifiedOn)
           : ""}

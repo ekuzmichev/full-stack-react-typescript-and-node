@@ -1,16 +1,19 @@
 import React, { FC } from "react";
+import * as css from "./ThreadTitle.css";
 
 interface ThreadTitleProps {
   title?: string;
 }
 
 export const ThreadTitle: FC<ThreadTitleProps> = ({ title }) => {
-  const onTitleInputChange = (e: React.InputHTMLAttributes<HTMLInputElement>) => {};
+  const onTitleInputChange = (
+    e: React.InputHTMLAttributes<HTMLInputElement>
+  ) => {};
 
   return (
     <div className="thread-title-container">
       <strong>Title</strong>
-      <div className="field">
+      <div className={css.field}>
         <input
           type="text"
           value={title || ""}

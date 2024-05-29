@@ -37,3 +37,28 @@ globalStyle("hr", {
   width: "100%",
   border: "solid 2px rgba(115, 136, 181, 0.35)",
 });
+
+globalStyle(`input[type="text"], input[type="password"], select`, {
+  width: "100%",
+  padding: "12px 20px",
+  margin: "8px 0",
+  display: "inline-block",
+  border: "1px solid #ccc",
+  borderRadius: "4px",
+  boxSizing: "border-box",
+});
+
+globalStyle(`input[type="submit"]`, {
+  width: "100%",
+  backgroundColor: "#4caf50",
+  color: "white",
+  padding: "14px 20px",
+  margin: "8px 0",
+  border: "none",
+  borderRadius: "4px",
+  cursor: "pointer",
+});
+
+globalStyle(`input[type="submit"]:hover`, {
+  backgroundColor: "#45a049",
+});

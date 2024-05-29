@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { UserNameAndTime } from "./UserNameAndTime";
+import * as css from "./ThreadHeader.css"
 
 interface ThreadHeaderProps {
   userName?: string;
@@ -13,7 +14,7 @@ export const ThreadHeader: FC<ThreadHeaderProps> = ({
   title,
 }) => {
   return (
-    <div className="thread-header-container">
+    <div className={css.threadHeaderContainer}>
       <h3>{title}</h3>
       <UserNameAndTime userName={userName} lastModifiedOn={lastModifiedOn} />
     </div>

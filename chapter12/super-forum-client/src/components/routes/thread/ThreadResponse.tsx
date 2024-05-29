@@ -3,6 +3,7 @@ import { FC } from "react";
 import { PointsIcon } from "../../common/PointsIcon";
 import { RichEditor } from "../../editor/RichEditor";
 import { UserNameAndTime } from "./UserNameAndTime";
+import * as css from "./ThreadResponse.css"
 
 interface ThreadResponseProps {
   body?: string;
@@ -19,16 +20,16 @@ export const ThreadResponse: FC<ThreadResponseProps> = ({
 }) => {
   return (
     <div>
-      <div>
+      <div className={css.userInfo}>
         <UserNameAndTime userName={userName} lastModifiedOn={lastModifiedOn} />
-        <span style={{ marginLeft: "1em" }}>
-          <label>
+        <span>
+          <label className={css.points}>
             {points || 0}
             <PointsIcon icon={faHeart} />
           </label>
         </span>
       </div>
-      <div className="thread-body-editor">
+      <div className={css.threadBodyEditor}>
         <RichEditor existingBody={body} />
       </div>
     </div>

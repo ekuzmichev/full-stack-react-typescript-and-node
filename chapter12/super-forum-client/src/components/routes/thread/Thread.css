@@ -53,16 +53,6 @@
   margin-top: 0.75em;
 }
 
-.thread-body-container {
-  margin-top: 1em;
-}
-
-.thread-body-editor {
-  margin-top: 0.5em;
-  border: solid 1px var(--proceed-color);
-  padding: 0.5em 1em 0.5em 1em;
-}
-
 .thread-section-divider {
   margin-top: 1em;
   margin-bottom: 1em;
