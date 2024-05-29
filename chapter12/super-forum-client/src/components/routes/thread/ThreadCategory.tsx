@@ -1,6 +1,7 @@
 import { FC } from "react";
 import DropDown, { Option } from "react-dropdown";
 import "react-dropdown/style.css";
+import * as css from "./ThreadCategory.css";
 
 interface ThreadCategoryProps {
   categoryName?: string;
@@ -25,10 +26,10 @@ export const ThreadCategory: FC<ThreadCategoryProps> = ({ categoryName }) => {
   };
 
   return (
-    <div className="thread-category-container">
+    <div className={css.container}>
       <strong>{categoryName}</strong>
       <DropDown
-        className="thread-category-dropdown"
+        className={css.dropdown}
         options={categoryOptions}
         onChange={onDropDownChange}
         value={defaultCategoryOption}

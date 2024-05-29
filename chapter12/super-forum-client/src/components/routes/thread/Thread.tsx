@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { screenRootContainer } from "../../../App.css";
 import { Thread as ThreadModel } from "../../../models/Thread";
 import { getThreadById } from "../../../services/DataService";
 import { NavigationBar } from "../../areas/navigation-bar/NavigationBar";
 import { ThreadPointsBar } from "../../points/ThreadPointsBar";
-import "./Thread.css";
+import * as css from "./Thread.css";
 import { ThreadBody } from "./ThreadBody";
 import { ThreadCategory } from "./ThreadCategory";
 import { ThreadHeader } from "./ThreadHeader";
@@ -16,7 +17,7 @@ export const Thread = () => {
   const { id } = useParams(); // Retrieving route path parameter
 
   useEffect(() => {
-    console.log("Thread id:", id);
+    console.log("Thread Id:", id);
 
     if (id && Number(id) > 0) {
       getThreadById(id).then((thread: ThreadModel) => {
@@ -26,12 +27,10 @@ export const Thread = () => {
   }, [id]);
 
   return (
-    <div className="screen-root-container">
-      <div className="thread-nav-container">
-        <NavigationBar />
-      </div>
-      <div className="thread-content-container">
-        <div className="thread-content-post-container">
+    <div className={screenRootContainer}>
+      <NavigationBar />
+      <div className={css.contentContainer}>
+        <div className={css.contentPostContainer}>
           <ThreadHeader
             userName={thread?.userName}
             lastModifiedOn={thread ? thread.lastModifiedOn : new Date()}
@@ -41,15 +40,15 @@ export const Thread = () => {
           <ThreadTitle title={thread?.title} />
           <ThreadBody body={thread?.body} />
         </div>
-        <div className="thread-content-points-container">
+        <div className={css.contentPointsContainer}>
           <ThreadPointsBar
             points={thread?.points || 0}
             responseCount={thread?.threadItems?.length}
           />
         </div>
       </div>
-      <div className="thread-content-response-container">
-        <hr className="thread-section-divider" />
+      <div className={css.contentResponseContainer}>
+        <hr className={css.sectionDivider} />
         <ThreadResponsesBuilder threadItems={thread?.threadItems} />
       </div>
     </div>

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { RichEditor } from "../../editor/RichEditor";
+import * as css from "./ThreadBody.css";
 
 interface ThreadBodyProps {
   body?: string;
@@ -7,9 +8,9 @@ interface ThreadBodyProps {
 
 export const ThreadBody: FC<ThreadBodyProps> = ({ body }) => {
   return (
-    <div className="thread-body-container">
+    <div className={css.container}>
       <strong>Body</strong>
-      <div className="thread-body-editor">
+      <div className={css.editor}>
         <RichEditor existingBody={body} />
       </div>
     </div>

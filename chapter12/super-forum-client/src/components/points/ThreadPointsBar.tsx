@@ -7,6 +7,7 @@ import * as css from "./ThreadPointsBar.css";
 export interface ThreadPointsBarProps {
   points: number;
   responseCount?: number;
+  height?: string | number;
 }
 
 export const ThreadPointsBar: FC<ThreadPointsBarProps> = ({

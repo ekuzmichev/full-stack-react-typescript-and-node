@@ -18,7 +18,7 @@ export const LeftMenu = () => {
         );
         setCategoriesJsxElement(<ul>{categoryListItemElements}</ul>);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("Error:", err));
   }, []);
 
   if (isMobile) {

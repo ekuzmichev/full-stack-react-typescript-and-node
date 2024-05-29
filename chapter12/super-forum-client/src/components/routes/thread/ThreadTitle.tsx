@@ -11,7 +11,7 @@ export const ThreadTitle: FC<ThreadTitleProps> = ({ title }) => {
   ) => {};
 
   return (
-    <div className="thread-title-container">
+    <div className={css.container}>
       <strong>Title</strong>
       <div className={css.field}>
         <input

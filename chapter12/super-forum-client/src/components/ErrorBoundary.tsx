@@ -32,7 +32,7 @@ export class ErrorBoundary extends React.Component<
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     const errorDetails: ErrorDetails = { error, errorInfo };
-    console.log("errorDetails", errorDetails);
+    console.log("Error details:", errorDetails);
     this.setState({ hasError: true, errorDetails });
   }
 
