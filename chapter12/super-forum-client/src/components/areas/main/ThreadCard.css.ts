@@ -40,13 +40,16 @@ export const footer = style({
   fontWeight: "bold",
   wordWrap: "break-word",
   overflow: "auto",
-  marginTop: "0.5em",
+  marginTop: "1em",
 });
 
 export const points = style({
   display: "flex",
   flexDirection: "row",
-  gap: "0.5em",
+  justifyContent: "flex-start",
+  alignItems: "center",
+  gap: "0.3em",
+  width: 40,
 });
 
 export const usernameHeader = style({
@@ -54,6 +57,7 @@ export const usernameHeader = style({
 });
 
 export const question = style({
+  marginTop: ".4em",
   marginBottom: ".4em",
 });
 

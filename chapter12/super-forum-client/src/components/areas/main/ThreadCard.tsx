@@ -45,9 +45,9 @@ export const ThreadCard: FC<ThreadCardProps> = ({ thread }) => {
             <div>{thread.body}</div>
           </div>
           <div className={css.footer}>
-            <div className={css.points}>
+            <div>
               <span>
-                <label>
+                <label className={css.points}>
                   {thread.views}
                   <PointsIcon icon={faEye} />
                 </label>
