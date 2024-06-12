@@ -10,7 +10,7 @@ export function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // todo: replace with GraphQL call
+    // TODO: replace with GraphQL call
     dispatch(
       setUserProfile({
         id: 1,
