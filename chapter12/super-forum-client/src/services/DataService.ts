@@ -2,201 +2,152 @@ import { Category } from "../models/Category";
 import { CategoryThread } from "../models/CategoryThread";
 import { Thread } from "../models/Thread";
 
-export async function getCategories(): Promise<Category[]> {
-  const promise = new Promise<Category[]>((res, rej) => {
+const TIMEOUT: number = 2000;
+
+const CATEGORIES: Category[] = [
+  { id: "1", name: "Programming" },
+  { id: "2", name: "Cooking" },
+  { id: "3", name: "Sports" },
+  { id: "4", name: "Entertainment" },
+  { id: "5", name: "Travel" },
+];
+
+const LOREM_IPSUM: string =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. " +
+  "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. " +
+  "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. " +
+  "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
+const THREAD_1: Thread = {
+  id: "1",
+  views: 22,
+  title: "Thread 1",
+  body: LOREM_IPSUM,
+  userName: "dave",
+  userId: "1",
+  points: 11,
+  createdOn: new Date(),
+  lastModifiedOn: new Date(),
+  threadItems: [
+    {
+      id: "1",
+      views: 22,
+      points: 2,
+      body: "ThreadItem 1",
+      userName: "jon",
+      userId: "2",
+      createdOn: new Date(),
+      threadId: "1",
+    },
+    {
+      id: "2",
+      views: 11,
+      points: 14,
+      body: "ThreadItem 2",
+      userName: "linda",
+      userId: "4",
+      createdOn: new Date(),
+      threadId: "1",
+    },
+  ],
+  category: { id: "1", name: "Programming" },
+};
+
+const THREAD_2: Thread = {
+  id: "2",
+  views: 2,
+  title: "Thread 2",
+  body: LOREM_IPSUM,
+  userName: "tim",
+  userId: "2",
+  points: 55,
+  createdOn: new Date(),
+  lastModifiedOn: new Date(),
+  threadItems: [
+    {
+      id: "1",
+      views: 22,
+      points: 2,
+      body: "ThreadItem 1",
+      userName: "jon",
+      userId: "2",
+      createdOn: new Date(),
+      threadId: "2",
+    },
+  ],
+  category: { id: "1", name: "Programming" },
+};
+
+const THREADS: Thread[] = [THREAD_1, THREAD_2];
+
+const CATEGORY_THREADS: CategoryThread[] = [
+  {
+    threadId: "1",
+    category: "Programming",
+    title: "How can I learn JavaScript",
+  },
+  { threadId: "2", category: "Programming", title: "How can I learn Node" },
+  { threadId: "3", category: "Programming", title: "How can I learn React" },
+  {
+    threadId: "4",
+    category: "Cooking",
+    title: "How do I learn French cuisine?",
+  },
+  {
+    threadId: "5",
+    category: "Cooking",
+    title: "How do I learn Italian cuisine?",
+  },
+  {
+    threadId: "6",
+    category: "Sports",
+    title: "How can I learn to play Soccer",
+  },
+  {
+    threadId: "7",
+    category: "Sports",
+    title: "How can I learn to play Basketball",
+  },
+  {
+    threadId: "8",
+    category: "Sports",
+    title: "How can I learn to play Baseball",
+  },
+];
+
+export const getCategories = async (): Promise<Category[]> =>
+  new Promise<Category[]>((resolve) => {
     setTimeout(() => {
-      const categories: Category[] = [
-        new Category("1", "Programming"),
-        new Category("2", "Cooking"),
-        new Category("3", "Sports"),
-        new Category("4", "Entertainment"),
-        new Category("5", "Travel"),
-      ];
-
-      res(categories);
-    }, 2000);
+      resolve(CATEGORIES);
+    }, TIMEOUT);
   });
-  return promise;
-}
 
-export async function getThreadsByCategory(catId: string): Promise<Thread[]> {
-  const promise = new Promise<Thread[]>((res, rej) => {
+export const getThreadsByCategory = async (
+  categoryId: string
+): Promise<Thread[]> =>
+  new Promise<Thread[]>((resolve) => {
     setTimeout(() => {
-      const threads: Thread[] = [];
-      threads.push({
-        id: "1",
-        views: 22,
-        title: "Thread 1",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        userName: "dave",
-        userId: "1",
-        points: 11,
-        createdOn: new Date(),
-        lastModifiedOn: new Date(),
-        threadItems: [
-          {
-            id: "1",
-            views: 22,
-            points: 2,
-            body: "ThreadItem 1",
-            userName: "jon",
-            userId: "2",
-            createdOn: new Date(),
-            threadId: "1",
-          },
-        ],
-        category: new Category("1", "Programming"),
-      });
-      threads.push({
-        id: "2",
-        views: 2,
-        title: "Thread 2",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        userName: "tim",
-        userId: "2",
-        points: 55,
-        createdOn: new Date(),
-        lastModifiedOn: new Date(),
-        threadItems: [
-          {
-            id: "1",
-            views: 22,
-            points: 2,
-            body: "ThreadItem 1",
-            userName: "jon",
-            userId: "2",
-            createdOn: new Date(),
-            threadId: "2",
-          },
-        ],
-        category: new Category("1", "Programming"),
-      });
-
-      res(threads);
-    }, 2000);
+      resolve(THREADS);
+    }, TIMEOUT);
   });
-  return promise;
-}
 
-export async function getTopCategories(): Promise<CategoryThread[]> {
-  const promise = new Promise<CategoryThread[]>((res, rej) => {
+export const getTopCategories = async (): Promise<CategoryThread[]> =>
+  new Promise<CategoryThread[]>((resolve) => {
     setTimeout(() => {
-      const topCategories: CategoryThread[] = [
-        new CategoryThread("1", "Programming", "How can I learn JavaScript"),
-        new CategoryThread("2", "Programming", "How can I learn Node"),
-        new CategoryThread("3", "Programming", "How can I learn React"),
-        new CategoryThread("4", "Cooking", "How do I learn French cuisine?"),
-        new CategoryThread("5", "Cooking", "How do I learn Italian cuisine?"),
-        new CategoryThread("6", "Sports", "How can I learn to play Soccer"),
-        new CategoryThread("7", "Sports", "How can I learn to play Basketball"),
-        new CategoryThread("8", "Sports", "How can I learn to play Baseball"),
-      ];
-
-      res(topCategories);
-    }, 2000);
+      resolve(CATEGORY_THREADS);
+    }, TIMEOUT);
   });
-  return promise;
-}
 
-export async function getThreadById(Id: string): Promise<Thread> {
-  const promise = new Promise<Thread>((res, rej) => {
+export const getThreadById = async (threadId: string): Promise<Thread> =>
+  new Promise<Thread>((resolve) => {
     setTimeout(() => {
-      const thread = {
-        id: "1",
-        views: 22,
-        title: "Thread 1",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        userName: "dave",
-        userId: "1",
-        points: 11,
-        createdOn: new Date(),
-        lastModifiedOn: new Date(),
-        threadItems: [
-          {
-            id: "1",
-            views: 22,
-            points: 2,
-            body: "ThreadItem 1",
-            userName: "jon",
-            userId: "2",
-            createdOn: new Date(),
-            threadId: "1",
-          },
-          {
-            id: "2",
-            views: 11,
-            points: 14,
-            body: "ThreadItem 2",
-            userName: "linda",
-            userId: "4",
-            createdOn: new Date(),
-            threadId: "1",
-          },
-        ],
-        category: new Category("1", "Programming"),
-      };
-
-      res(thread);
-    }, 2000);
+      resolve(THREAD_1);
+    }, TIMEOUT);
   });
-  return promise;
-}
 
-export async function getUserThreads(id: string): Promise<Thread[]> {
-  const result = new Promise<Thread[]>((res) => {
+export const getUserThreads = async (userId: string): Promise<Thread[]> =>
+  new Promise<Thread[]>((resolve) => {
     setTimeout(() => {
-      const threads: Thread[] = [];
-      threads.push({
-        id: "1",
-        views: 22,
-        title: "Thread 1",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        userName: "dave",
-        userId: "1",
-        points: 11,
-        createdOn: new Date(),
-        lastModifiedOn: new Date(),
-        threadItems: [
-          {
-            id: "1",
-            views: 22,
-            points: 2,
-            body: "ThreadItem 1",
-            userName: "jon",
-            userId: "2",
-            createdOn: new Date(),
-            threadId: "1",
-          },
-        ],
-        category: new Category("1", "Programming"),
-      });
-      threads.push({
-        id: "2",
-        views: 2,
-        title: "Thread 2",
-        body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-        userName: "tim",
-        userId: "2",
-        points: 55,
-        createdOn: new Date(),
-        lastModifiedOn: new Date(),
-        threadItems: [
-          {
-            id: "1",
-            views: 22,
-            points: 2,
-            body: "ThreadItem 1",
-            userName: "jon",
-            userId: "2",
-            createdOn: new Date(),
-            threadId: "2",
-          },
-        ],
-        category: new Category("1", "Programming"),
-      });
-
-      res(threads);
-    }, 2000);
+      resolve(THREADS);
+    }, TIMEOUT);
   });
-  return result;
-}
