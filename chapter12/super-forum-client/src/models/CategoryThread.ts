@@ -1,7 +1,5 @@
-export class CategoryThread {
-  constructor(
-    public threadId: string,
-    public category: string,
-    public title: string
-  ) {}
+export interface CategoryThread {
+  threadId: string;
+  category: string;
+  title: string;
 }

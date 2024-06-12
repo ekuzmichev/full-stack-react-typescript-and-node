@@ -1,12 +1,10 @@
-export class ThreadItem {
-  constructor(
-    public id: string,
-    public views: number,
-    public points: number,
-    public body: string,
-    public userName: string,
-    public userId: string,
-    public createdOn: Date,
-    public threadId: string
-  ) {}
+export interface ThreadItem {
+  id: string;
+  views: number;
+  points: number;
+  body: string;
+  userName: string;
+  userId: string;
+  createdOn: Date;
+  threadId: string;
 }
