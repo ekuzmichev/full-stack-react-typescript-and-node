@@ -1,6 +1,7 @@
 import { useEffect, useReducer, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { screenRootContainer } from "../../../App.css";
 import { Thread } from "../../../models/Thread";
 import { ThreadItem } from "../../../models/ThreadItem";
 import { UserState } from "../../../reducers/user-reducer";
@@ -74,14 +75,12 @@ export const UserProfile = () => {
   }, [userState]);
 
   return (
-    <div className="screen-root-container">
-      <div className="thread-nav-container">
-        <NavigationBar />
-      </div>
+    <div className={screenRootContainer}>
+      <NavigationBar />
       <form className={css.contentContainer}>
         <div>
           <strong>User Profile</strong>
-          <label style={{ marginLeft: ".75em" }}>{username}</label>
+          <label className={css.username}>{username}</label>
         </div>
         <div className={css.password}>
           <div>
@@ -90,21 +89,21 @@ export const UserProfile = () => {
               password={password}
               passwordConfirmation={passwordConfirmation}
             />
-            <button className="action-btn" disabled={!isSubmitEnabled}>
+            <button className={css.actionBtn} disabled={!isSubmitEnabled}>
               Change Password
             </button>
           </div>
-          <div style={{ marginTop: ".5em" }}>
+          <div className={css.resultMessage}>
             <label>{resultMessage}</label>
           </div>
         </div>
         <div className={css.postings}>
-          <hr className="thread-section-divider" />
-          <div className="userprofile-threads">
+          <hr className={css.threadSectionDivider} />
+          <div>
             <strong>Threads Posted</strong>
             {threads}
           </div>
-          <div className="userprofile-threadIems">
+          <div>
             <strong>ThreadItems Posted</strong>
             {threadItems}
           </div>

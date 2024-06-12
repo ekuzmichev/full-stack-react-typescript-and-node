@@ -7,6 +7,7 @@ import { Modal } from "../common/Modal";
 import { ModalProps } from "../types/ModalProps";
 import { allowSubmit } from "./common/Helpers";
 import { actions, getInitialState, reducer } from "./common/UserReducer";
+import * as css from "./Login.css"
 
 export const Login: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
   const reduxDispatch: Dispatch<Action> = useDispatch();
@@ -64,7 +65,7 @@ export const Login: FC<ModalProps> = ({ isOpen, onVisibilityToggle }) => {
       ariaHideApp={false}
     >
       <form>
-        <div className="reg-inputs">
+        <div className={css.inputs}>
           <div>
             <label>username</label>
             <input type="text" value={username} onChange={onUsernameChange} />
