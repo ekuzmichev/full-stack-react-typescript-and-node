@@ -1,6 +1,7 @@
 import express from "express";
 import session from "express-session";
 import Redis from "ioredis";
+import { DataSource } from "typeorm";
 
 declare module "express-session" {
   export interface SessionData {
@@ -9,58 +10,91 @@ declare module "express-session" {
   }
 }
 
-require("dotenv").config();
+const dotenv = require("dotenv");
+const dotenvParseVariables = require("dotenv-parse-variables");
 
-const app = express();
-const router = express.Router();
+let env = dotenv.config({});
+if (env.error) throw env.error;
+env = dotenvParseVariables(env.parsed);
 
-const redis = new Redis({
-  host: process.env.REDIS_HOST,
-  port: Number(process.env.REDIS_PORT),
-  password: process.env.REDIS_PASSWORD, // Comment the line in the case when the password is not set
-});
+console.log(env);
 
-const RedisStore = require("connect-redis").default;
+const main = async () => {
+  const app = express();
+  const router = express.Router();
 
-const redisStore = new RedisStore({
-  client: redis,
-});
+  const AppDataSource = new DataSource({
+    type: "postgres",
+    host: env.PG_HOST,
+    port: parseInt(String(env.PG_PORT)),
+    username: env.PG_USERNAME,
+    password: env.PG_PASSWORD,
+    database: env.PG_DATABASE,
+    synchronize: env.PG_SYNCHRONIZE,
+    logging: env.PG_LOGGING,
+    entities: [env.PG_ENTITIES],
+  });
 
-app.use(
-  session({
-    store: redisStore,
-    name: process.env.COOKIE_NAME,
-    secret: process.env.SESSION_SECRET as string,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      path: "/",
-      httpOnly: true, // The cookie is not available from JavaScript
-      secure: false, // We are not using HTTPS
-      maxAge: 1000 * 60 * 60 * 24, // 1 day
-      sameSite: "strict",
-    },
-  })
-);
+  await AppDataSource.initialize()
+    .then((dataSource) => {
+      console.log(
+        `Data Source has been initialized: ${dataSource.isInitialized}`
+      );
+    })
+    .catch((err) => {
+      console.error("Error during Data Source initialization", err);
+    });
 
-app.use(router);
+  const redis = new Redis({
+    host: env.REDIS_HOST,
+    port: Number(env.REDIS_PORT),
+    password: env.REDIS_PASSWORD, // Comment the line in the case when the password is not set
+  });
 
-router.get("/", (req, res, next) => {
-  if (!req.session!.userId) {
-    req.session!.userId = req.query.userId as string;
-    console.log("UserId is set");
-    req.session!.loadedCount = 0;
-  } else {
-    req.session!.loadedCount = Number(req.session!.loadedCount) + 1;
-  }
+  const RedisStore = require("connect-redis").default;
 
-  res.send(
-    `userId: ${req.session!.userId}, loadedCount: ${req.session!.loadedCount}`
+  const redisStore = new RedisStore({
+    client: redis,
+  });
+
+  app.use(
+    session({
+      store: redisStore,
+      name: env.COOKIE_NAME,
+      secret: env.SESSION_SECRET as string,
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+        path: "/",
+        httpOnly: true, // The cookie is not available from JavaScript
+        secure: false, // We are not using HTTPS
+        maxAge: 1000 * 60 * 60 * 24, // 1 day
+        sameSite: "strict",
+      },
+    })
   );
-});
 
-const port: number = Number(process.env.SERVER_PORT);
+  app.use(router);
 
-app.listen(port, () => {
-  console.log(`Server ready on port ${port}. Mode: ${process.env.NODE_ENV}`);
-});
+  router.get("/", (req, res, next) => {
+    if (!req.session!.userId) {
+      req.session!.userId = req.query.userId as string;
+      console.log("UserId is set");
+      req.session!.loadedCount = 0;
+    } else {
+      req.session!.loadedCount = Number(req.session!.loadedCount) + 1;
+    }
+
+    res.send(
+      `userId: ${req.session!.userId}, loadedCount: ${req.session!.loadedCount}`
+    );
+  });
+
+  const port: number = Number(env.SERVER_PORT);
+
+  app.listen(port, () => {
+    console.log(`Server ready on port ${port}. Mode: ${env.NODE_ENV}`);
+  });
+};
+
+main();
